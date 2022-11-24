@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Teacher</title>
+</head>
+<body>
+
+<div class="container my-5">
+    <div class="d-grid gap-2">
+        <a href="{% url 'creatediscipline' %}"><button class="btn btn-primary" type="button">Добавить дисциплины</button></a>
+        <a href="{% url 'create' %}"><button class="btn btn-primary" type="button">Ввести исходные данные для группы</button></a>
+        <a href="{% url 'create1' %}"><button class="btn btn-primary" type="button">Добавление группы</button></a>
+        <a href="{% url 'createteacher' %}"><button class="btn btn-primary" type="button">Добавить преподователя</button></a>
+        <a href="{% url 'createconnects' %}"><button class="btn btn-primary" type="button">Связать</button></a>
+        <a href="{% url 'showgroupp' %}"><button class="btn btn-primary" type="button">Список групп</button></a>
+        <a href="{% url 'vedomost' %}"><button class="btn btn-primary" type="button">Сводная ведомость</button></a>
+        <a href="{% url 'shtatnoe' %}"><button class="btn btn-primary" type="button">Штатное расписание</button></a>
+    </div>
+{% for teacher in teachers %}
+<table class="table table-warning">
+    <p>
+
+    </p>
+    <a href="{% url 'group_teacher' teacher.pk %}" ><h3>{{ teacher.name }}</h3></a>
+
+    <thead>
+
+    <tr>
+      <th scope="col">Группы</th>
+      <th scope="col">Дисциплины</th>
+      <th scope="col">Часы</th>
+      <th scope="col">Итого</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {% for i in teacher.teacherr.all %}
+    {% for group in i.group_id.all %}
+    <tr>
+      <th scope="row">{{ group.name }}</th>
+      <td>{{ group.discipline_name }}</td>
+      <td>{{ group.vsego_uchebnyh_chasov|floatformat:1 }}</td>
+      <td>.</td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+    <tr>
+      <th scope="row"></th>
+      <td></td>
+      <td></td>
+      <td>{{ teacher.total|floatformat:1 }}</td>
+    </tr>
+  </tbody>
+</table>
+{% endfor %}
+    </div>
+</body>
+</html>
