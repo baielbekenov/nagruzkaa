@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+
+<table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col">Группa</th>
+      <th scope="col">Кол. студ.бюджет</th>
+      <th scope="col">Кол. студ.контракт</th>
+      <th scope="col">Общее кол.студентов</th>
+      <th scope="col">Семестер</th>
+      <th scope="col">Лекции/ По учебному плану</th>
+      <th scope="col">Лекции/ Зачитывается в нагрузку кафедры (ч.)</th>
+      <th scope="col">Практ.зан/ По учебному плану</th>
+      <th scope="col">Практ.зан/ Зачитывается в нагрузку кафедры (ч.)</th>
+      <th scope="col">Лаб.раб/ По учебному плану</th>
+      <th scope="col">Лаб.раб/ Зачитывается в нагрузку кафедры (ч.)</th>
+      <th scope="col">Руковод.КРиКП</th>
+      <th scope="col">Рецениров_КР</th>
+      <th scope="col">Прием СРС</th>
+      <th scope="col">Практика/Учебная</th>
+      <th scope="col">Практика/Производ</th>
+      <th scope="col">Практика/Предквал</th>
+      <th scope="col">Практика/Педагогическая</th>
+      <th scope="col">Практика/Научно-исследовательская</th>
+      <th scope="col">Контроль/текущий (1 контр.точка)</th>
+      <th scope="col">Контроль/текущий (2 контр.точка)</th>
+      <th scope="col">Контроль/текущий (3 контр.точка)</th>
+      <th scope="col">Контроль/итоговый (экзамен)</th>
+      <th scope="col">Защита вып. квал. работы/ руководство ВКР</th>
+      <th scope="col">Защита вып. квал. работы/ консульт. по разделам</th>
+      <th scope="col">Защита вып. квал. работы/ рецензирование</th>
+      <th scope="col">Защита вып. квал. работы/ участие в ГАК</th>
+      <th scope="col">Нормоконтр</th>
+      <th scope="col">Магистратура</th>
+      <th scope="col">Аспирантура, Докторантура</th>
+      <th scope="col">Онлайн</th>
+      <th scope="col">Офлайн</th>
+      <th scope="col">Академ. сов.</th>
+      <th scope="col">Руководство кафедрой</th>
+      <th scope="col">Руководство деканатом</th>
+      <th scope="col">Прочие</th>
+      <th scope="col">Всего учебных часов по расчету</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for group in groupp %}
+    <tr>
+      <th>{{ group.name }}</th>
+      <td>{{ group.kol_stud_budget }}</td>
+      <td>{{ group.kol_stud_contract }}</td>
+      <td>{{ group.obshee_kol_stud }}</td>
+      <td>{{ group.semester }}</td>
+      <td>{{ group.lekcii_po_ucheb_planu }}</td>
+      <td>{{ group.lekcii_zachityvaetsa_v_nagruzku }}</td>
+      <td>{{ group.praktZan_po_ucheb_planu }}</td>
+      <td>{{ group.praktZan_zachityvaetsa_v_nagruzku }}</td>
+      <td>{{ group.labRab_po_ucheb_planu }}</td>
+      <td>{{ group.labRab_zachityvaetsa_v_nagruzku }}</td>
+      <td>{{ group.rukovod_KRIKP }}</td>
+      <td>{{ group.recenzirov_KR }}</td>
+      <td>{{ group.priem_SRS |floatformat:1 }}</td>
+      <td>{{ group.praktika_uchebnay }}</td>
+      <td>{{ group.praktika_proizvod }}</td>
+      <td>{{ group.praktika_predkval }}</td>
+      <td>{{ group.praktika_pedagog }}</td>
+      <td>{{ group.praktika_nauchno }}</td>
+      <td>{{ group.kontrol_tekuchiy1 |floatformat:1}}</td>
+      <td>{{ group.kontrol_tekuchiy2 |floatformat:1}}</td>
+      <td>{{ group.kontrol_tekuchiy3 |floatformat:1}}</td>
+      <td>{{ group.kontrol_itogovyi |floatformat:1}}</td>
+      <td>{{ group.zachita_rukovod_VKR }}</td>
+      <td>{{ group.zachita_konsult }}</td>
+      <td>{{ group.zachita_recencirovanie }}</td>
+      <td>{{ group.zachita_uchastie_v_GAK }}</td>
+      <td>{{ group.normokontr }}</td>
+      <td>{{ group.magistratura }}</td>
+      <td>{{ group.aspirantura_doctorontura }}</td>
+      <td>{{ group.online }}</td>
+      <td>{{ group.offline }}</td>
+      <td>{{ group.academ_sov }}</td>
+      <td>{{ group.rukovodstvo_kafedroi }}</td>
+      <td>{{ group.rukovodstvo_dekanatom }}</td>
+      <td>{{ group.prochie }}</td>
+      <td>{{ group.vsego_uchebnyh_chasov |floatformat:1 }}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>
