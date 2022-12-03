@@ -403,8 +403,21 @@ def createconnects(request):
             connect = form.save(commit=False)
             teacher = get_object_or_404(Teacher, id=connect.teacher_id)
             group = get_object_or_404(Group, id=connect.group_id_id)
-            connect.name_of_teacher = teacher.name
-
+            # connect.name = teacher.name
+            # connect.job_title = teacher.job_title
+            # connect.zvanie = teacher.zvanie
+            # connect.ped_staj = teacher.ped_staj
+            # connect.shtat_sovmest = teacher.shtat_sovmest
+            # connect.shtat_edinicy_budget = teacher.stavka_budget
+            # connect.shtat_edinicy_kontrakt_ochnoe = teacher.stavka_ochnoe
+            # connect.shtat_edinicy_kontrakt_zaochnoe = 0
+            # connect.shtat_edinicy_vsego = teacher.stavka_budget + teacher.stavka_ochnoe + 0
+            # if teacher.is_budget == True:
+            #     connect.ucheb_nagruzka_budget = group.Sum('teacherr__group_id__vsego_uchebnyh_chasov')
+            # else:
+            #     connect.ucheb_nagruzka_kontract_ochnoe = group.Sum('teacherr__group_id__vsego_uchebnyh_chasov')
+            # connect.ucheb_nagruzka_kontract_zaochnoe = 0
+            # connect.ucheb_nagruzka_Vsego = group.Sum('teacherr__group_id__vsego_uchebnyh_chasov')
 
             form.save()
 

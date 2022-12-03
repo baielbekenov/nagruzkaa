@@ -44,7 +44,6 @@ class TeacherForm(ModelForm):
 
 
 class ConnectForm(forms.Form):
-    name_of_teacher = forms.CharField(max_length=100)
 
     class Meta:
         model = Connect

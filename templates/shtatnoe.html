@@ -18,21 +18,32 @@
         <th scope="col">Пед. стаж</th>
         <th scope="col">Штат. или совмест.</th>
         <th scope="col">Штатные единицы/бюджет</th>
-        <th scope="col">Штатные</th>
-        <th scope="col">Лаб.раб/ Зачитывается в нагрузку кафедры (ч.)</th>
-        <th scope="col">Руковод.КРиКП</th>
-        <th scope="col">Рецениров_КР</th>
-        <th scope="col">Прием СРС</th>
-        <th scope="col">Практика/Учебная</th>
-        <th scope="col">Практика/Производ</th>
-        <th scope="col">Практика/Предквал</th>
-        <th scope="col">Практика/Педагогическая</th>
+        <th scope="col">Штатные единицы/контракт/очное</th>
+        <th scope="col">Штатные единицы/контракт/заочное</th>
+        <th scope="col">Штатные единицы/всего</th>
+        <th scope="col">Учебная нагрузка/бюджет</th>
+        <th scope="col">Учебная нагрузка/контракт/очное</th>
+        <th scope="col">Учебная нагрузка/контракт/заочное</th>
+        <th scope="col">Учебная нагрузка/Всего</th>
       </tr>
-<!--      {% for connect in connects %}-->
+      {% for connect in connects %}
       <tr class="table-warning">
-        <td>{{ connect.name_of_teacher }}</td>
+        <td>{{ connect.name }}</td>
+          <td>{{ connect.name }}</td>
+          <td>{{ connect.job_title }}</td>
+          <td>{{ connect.zvanie }}</td>
+          <td>{{ connect.ped_staj }}</td>
+          <td>{{ connect.shtat_sovmest }}</td>
+          <td>{{ connect.shtat_edinicy_budget }}</td>
+          <td>{{ connect.shtat_edinicy_kontrakt_zaochnoe }}</td>
+          <td>{{ connect.shtat_edinicy_vsego }}</td>
+          <td>{{ connect.ucheb_nagruzka_budget }}</td>
+          <td>{{ connect.ucheb_nagruzka_kontract_ochnoe }}</td>
+          <td>{{ connect.ucheb_nagruzka_kontract_zaochnoe}}</td>
+          <td>{{ connect.ucheb_nagruzka_Vsego }}</td>
+
       </tr>
-<!--      {% endfor %}-->
+      {% endfor %}
   </table>
   <a href="{% url 'export_excel_vedomost' %}"><button class="btn btn-primary" type="button">Экспорт на excel</button></a>
 </div>
