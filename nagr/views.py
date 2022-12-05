@@ -207,6 +207,16 @@ def creatediscipline(request):
     context = {'form': form}
     return render(request, 'creatediscipline.html', context)
 
+def disciplinelist(request):
+    discipline = Discipline.objects.all().order_by('name', '-id').values()
+    context = {'discipline': discipline}
+    return render(request, 'disciplinelist.html', context)
+
+def deletediscipline(request, pk):
+    data = get_object_or_404(Discipline, id=pk)
+    data.delete()
+    return redirect('/')
+
 
 def thanks(request):
     return render(request, 'thanks.html',)
@@ -400,12 +410,6 @@ def createconnects(request):
     if request.method == 'POST':
         form = ConnectForm(request.POST)
         if form.is_valid():
-            connect = form.save(commit=False)
-            teacher = get_object_or_404(Teacher, id=connect.teacher_id)
-            group = get_object_or_404(Group, id=connect.group_id_id)
-            connect.name_of_teacher = teacher.name
-
-
             form.save()
 
             return HttpResponseRedirect('/thanks/')
@@ -415,9 +419,11 @@ def createconnects(request):
     return render(request, 'createconnects.html', context)
 
 def shtatnoe(request):
-    connect = Connect.objects.all()
-    context = {'connects': connect}
-    return render(request, 'shtatnoe.html', context)
+    if request.method == 'GET':
+        teacher = Teacher.objects.all().annotate(vsego_uchebnyh_chasov=Sum('teacherr__group_id__vsego_uchebnyh_chasov'))
+
+        context = {'teachers': teacher}
+        return render(request, 'shtatnoe.html', context)
 
 
 def showgroupp(request):

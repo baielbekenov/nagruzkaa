@@ -1,10 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<div class="container my-5">
+  <table class="table table-secondary" >
+      <thead>
+      <tr>
+        <th scope="col">Название дисциплины</th>
+        <th scope="col">Количество кредитов</th>
+        <th scope="col">Курсовой</th>
+      </tr>
+      {% for i in discipline %}
+          <tr class="table-warning">
+              <td>{{ i.name }}</td>
+              <td>{{ i.amount_of_credit }}</td>
+              <td>{{ i.is_kursovoi }}</td>
+              <td><a href="{% url 'deletediscipline' i.id %}"><button class="btn btn-danger" type="button">Удалить</button></a></td>
+          </tr>
+
+      {% endfor %}
+
+  </table>
+<!--  <a href="{% url 'export_excel_vedomost' %}"><button class="btn btn-primary" type="button">Экспорт на excel</button></a>-->
+</div>
 </body>
 </html>

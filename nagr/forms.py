@@ -36,6 +36,8 @@ class DisciplineForm(ModelForm):
         fields = '__all__'
 
 
+
+
 class TeacherForm(ModelForm):
 
     class Meta:
@@ -43,9 +45,9 @@ class TeacherForm(ModelForm):
         fields = '__all__'
 
 
-class ConnectForm(forms.Form):
-    name_of_teacher = forms.CharField(max_length=100)
+class ConnectForm(ModelForm):
 
     class Meta:
         model = Connect
         fields = '__all__'
+
