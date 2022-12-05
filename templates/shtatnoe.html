@@ -18,23 +18,49 @@
         <th scope="col">Пед. стаж</th>
         <th scope="col">Штат. или совмест.</th>
         <th scope="col">Штатные единицы/бюджет</th>
-        <th scope="col">Штатные</th>
-        <th scope="col">Лаб.раб/ Зачитывается в нагрузку кафедры (ч.)</th>
-        <th scope="col">Руковод.КРиКП</th>
-        <th scope="col">Рецениров_КР</th>
-        <th scope="col">Прием СРС</th>
-        <th scope="col">Практика/Учебная</th>
-        <th scope="col">Практика/Производ</th>
-        <th scope="col">Практика/Предквал</th>
-        <th scope="col">Практика/Педагогическая</th>
+        <th scope="col">Штатные единицы/контракт/очное</th>
+        <th scope="col">Штатные единицы/контракт/заочное</th>
+        <th scope="col">Учебная нагрузка/бюджет</th>
+        <th scope="col">Учебная нагрузка/контракт/очное</th>
+        <th scope="col">Учебная нагрузка/контракт/заочное</th>
       </tr>
-<!--      {% for connect in connects %}-->
-      <tr class="table-warning">
-        <td>{{ connect.name_of_teacher }}</td>
-      </tr>
-<!--      {% endfor %}-->
+      {% for teacher in teachers %}
+          {% if teacher.is_budget %}
+          <tr class="table-warning">
+              <td>{{ teacher.name }}</td>
+              <td>{{ teacher.job_title }}</td>
+              <td>{{ teacher.zvanie }}</td>
+              <td>{{ teacher.ped_staj }}</td>
+              <td>{{ teacher.shtat_sovmest }}</td>
+              <td>{{ teacher.stavka }}</td>
+              <td>{{ 0 }}</td>
+              <td>{{ 0 }}</td>
+              <td>{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
+              <td>{{ 0 }}</td>
+              <td>{{ 0 }}</td>
+          </tr>
+          {% endif %}
+      {% endfor %}
+
+      {% for teacher in teachers %}
+          {% if teacher.is_budget == False %}
+          <tr class="table-danger">
+              <td>{{ teacher.name }}</td>
+              <td>{{ teacher.job_title }}</td>
+              <td>{{ teacher.zvanie }}</td>
+              <td>{{ teacher.ped_staj }}</td>
+              <td>{{ teacher.shtat_sovmest }}</td>
+              <td>{{ 0 }}</td>
+              <td>{{ teacher.stavka }}</td>
+              <td>{{ 0 }}</td>
+              <td>{{ 0 }}</td>
+              <td>{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
+              <td>{{ 0 }}</td>
+          </tr>
+          {% endif %}
+      {% endfor %}
   </table>
-  <a href="{% url 'export_excel_vedomost' %}"><button class="btn btn-primary" type="button">Экспорт на excel</button></a>
+<!--  <a href="{% url 'export_excel_vedomost' %}"><button class="btn btn-primary" type="button">Экспорт на excel</button></a>-->
 </div>
 </body>
 </html>

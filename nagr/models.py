@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Discipline(models.Model):
-    name = models.CharField(max_length=150, blank=True, verbose_name='Название дисциплины: ')
+    name = models.CharField(max_length=150, blank=True, verbose_name='Название дисциплины: ', unique=True)
     amount_of_credit = models.IntegerField(verbose_name='Количество кредитов')
     is_kursovoi = models.BooleanField(default=False, verbose_name='Курсовой')
 
@@ -20,9 +20,11 @@ class Teacher(models.Model):
     name = models.CharField(max_length=250, verbose_name='ФИО преподователя: ')
     is_budget = models.BooleanField(default=False, verbose_name='Бюджетный')
     job_title = models.CharField(max_length=250, verbose_name='Должность', blank=True, null=True)
-    # zvanie = models.CharField(max_length=250, blank=True, null=True, verbose_name='Звание')
-    # ped_staj = models.IntegerField(default=0, verbose_name='Пед стаж')
-    # shtat_sovmest = models.CharField(max_length=250, verbose_name='Штат.или совмест.', blank=True, null=True)
+    zvanie = models.CharField(max_length=250, blank=True, null=True, verbose_name='Звание')
+    ped_staj = models.IntegerField(default=0, verbose_name='Пед стаж')
+    shtat_sovmest = models.CharField(max_length=250, verbose_name='Штат.или совмест.', blank=True, null=True)
+    stavka = models.FloatField(verbose_name='Ставка', blank=True, null=True)
+
 
 
     class Meta:
@@ -111,12 +113,6 @@ class Group(models.Model):
 class Connect(models.Model):
     group_id = models.ManyToManyField(Group, verbose_name='Группа')
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='teacherr', verbose_name='Преподователь')
-    shtatnye_budget = models.FloatField(default=0, verbose_name='Штатные единицы/Бюджет')
-    shtatnye_contract_ochnoe = models.FloatField(default=0, verbose_name='Штатные единицы/контракт/очное')
-    shtatnye_contract_zaochnoe = models.FloatField(default=0, verbose_name='Штатные единицы/контракт/заочное')
-    shtatnye_vsego = models.FloatField(default=0, verbose_name='Штатные единицы/Всего')
-    ucheb_budget = models.FloatField(default=0, verbose_name='Учебная нагрузка/Бюджет')
-    ucheb_contract_ochnoe = models.FloatField(default=0, verbose_name='Учебная нагрузка/контракт/очное')
-    ucheb_contract_zaochnoe = models.FloatField(default=0, verbose_name='Учебная нагрузка/контракт/заочное')
-    ucheb_vsego = models.FloatField(default=0, verbose_name='Учебная нагрузка/Всего')
+
+
 
