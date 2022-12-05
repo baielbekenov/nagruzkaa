@@ -225,11 +225,6 @@ def createteacher(request):
     if request.method == 'POST':
         form = TeacherForm(request.POST)
         if form.is_valid():
-            teacher = form.save(commit=False)
-            # if teacher.name == teacher.name:
-            #     if teacher.is_budget == teacher.is_budget:
-            #         if teacher.job_title == teacher.job_title:
-            #             return HttpResponse('Преподователь уже в базе!')
             form.save()
 
             return HttpResponseRedirect('/thanks/')
