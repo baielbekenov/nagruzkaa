@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae87cd85-d820-4351-a12d-f4922287edb0" name="Changes" comment="" />
+    <list default="true" id="ae87cd85-d820-4351-a12d-f4922287edb0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/connectlist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/teacherlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/nagr/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/nagr/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/nagr/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/nagr/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/shtatnoe.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shtatnoe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/teacher.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/teacher.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/vedomost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vedomost.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -15,23 +16,71 @@ class Discipline(models.Model):
         ordering = ('-id',)
 
 
+doljnost = ((1, 'Профессор'),
+            (2, 'Доцент'),
+            (3, 'Старший преподователь'),
+            (4, 'Преподователь')
+            )
+
 
 class Teacher(models.Model):
-    name = models.CharField(max_length=250, verbose_name='ФИО преподователя: ')
+    first_name = models.CharField(max_length=20, verbose_name='Имя')
+    last_name = models.CharField(max_length=30, verbose_name='Фамилия')
     is_budget = models.BooleanField(default=False, verbose_name='Бюджетный')
-    job_title = models.CharField(max_length=250, verbose_name='Должность', blank=True, null=True)
-    zvanie = models.CharField(max_length=250, blank=True, null=True, verbose_name='Звание')
-    ped_staj = models.IntegerField(default=0, verbose_name='Пед стаж')
-    shtat_sovmest = models.CharField(max_length=250, verbose_name='Штат.или совмест.', blank=True, null=True)
-    stavka = models.FloatField(verbose_name='Ставка', blank=True, null=True)
-
-
+    job_title = models.IntegerField(choices=doljnost, verbose_name='Должность')
+    zvanie = models.CharField(max_length=120, verbose_name='Звание')
+    ped_staj = models.IntegerField(verbose_name='Пед стаж')
+    shtat_sovmest = models.CharField(max_length=250, verbose_name='Штат.или совмест.')
+    stavka = models.FloatField(verbose_name='Ставка')
+    zaochnoe_stavka = models.FloatField(default=0, verbose_name='Заочная ставка', blank=True, null=True)
 
     class Meta:
         ordering = ('-id',)
 
     def __str__(self):
-        return self.name
+        return self.first_name + ' ' + self.last_name
+
+    def get_vsego_stavok(self):
+        return self.stavka + self.zaochnoe_stavka
+
+    def get_full_name(self):
+        return self.first_name + ' ' + self.last_name
+
+    def get_title_stavka(self):
+        if self.job_title == 1:
+            return 750
+        if self.job_title == 2:
+            return 800
+        if self.job_title == 3:
+            return 850
+        if self.job_title == 4:
+            return 860
+
+    def get_null(self):
+        return 0
+
+    def get_time(self):
+        if self.job_title == 1:
+            return self.stavka * 750
+        if self.job_title == 2:
+            return self.stavka * 800
+        if self.job_title == 3:
+            return self.stavka * 850
+        if self.job_title == 4:
+            return  self.stavka * 860
+
+
+    def get_time_zaochnoe(self):
+        if self.job_title == 1:
+            return self.zaochnoe_stavka * 750
+        if self.job_title == 2:
+            return self.zaochnoe_stavka * 800
+        if self.job_title == 3:
+            return self.zaochnoe_stavka * 850
+        if self.job_title == 4:
+            return  self.zaochnoe_stavka * 860
+
+
 
 
 class Groupp(models.Model):
@@ -62,6 +111,7 @@ class Group(models.Model):
     name_id = models.ForeignKey(Groupp, on_delete=models.CASCADE, verbose_name='Выберите группу')
     name = models.CharField(max_length=150, verbose_name='Название группы: ', blank=True, null=True)
     discipline_name = models.CharField(max_length=250, blank=True, null=True)
+    zaochnoe = models.BooleanField(default=False)
     amount_of_credit = models.IntegerField(default=0)
     kol_stud_budget = models.IntegerField(verbose_name='Кол. студ.бюджет', default=0)
     kol_stud_contract = models.IntegerField(verbose_name='Кол. студ.контракт', default=0)
@@ -106,13 +156,26 @@ class Group(models.Model):
     def __str__(self):
         return self.name
 
-    def __init__(self, data=None, *args, **kwargs):
-        super().__init__(data, *args, **kwargs)
+    def get_vsego_ucheb_chasov(self):
+        if self.zaochnoe == True:
+            count = []
+            count.append(self.vsego_uchebnyh_chasov)
+            kol = len(count)
+            total = 0
+            for i in range(0, kol):
+                total += i
+            return total
+        else:
+            return 0
+
 
 
 class Connect(models.Model):
     group_id = models.ManyToManyField(Group, verbose_name='Группа')
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='teacherr', verbose_name='Преподователь')
+
+    def __str__(self):
+        return f'{self.teacher} --> {self.group_id.name}'
 
 
 

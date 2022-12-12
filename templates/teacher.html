@@ -10,22 +10,28 @@
 
 <div class="container my-5">
     <div class="d-grid gap-2">
+        <p>
         <a href="{% url 'creatediscipline' %}"><button class="btn btn-primary" type="button">Добавить дисциплины</button></a>
         <a href="{% url 'disciplinelist' %}"><button class="btn btn-primary" type="button">Список Дисциплин</button></a>
         <a href="{% url 'create' %}"><button class="btn btn-primary" type="button">Ввести исходные данные для группы</button></a>
         <a href="{% url 'create1' %}"><button class="btn btn-primary" type="button">Добавление группы</button></a>
         <a href="{% url 'createteacher' %}"><button class="btn btn-primary" type="button">Добавить преподователя</button></a>
+        </p>
+        <p>
         <a href="{% url 'createconnects' %}"><button class="btn btn-primary" type="button">Связать</button></a>
+        <a href="{% url 'connectlist' %}"><button class="btn btn-primary" type="button">Список связок</button></a>
+        <a href="{% url 'teacherlist' %}"><button class="btn btn-primary" type="button">Список преподователей</button></a>
         <a href="{% url 'showgroupp' %}"><button class="btn btn-primary" type="button">Список групп</button></a>
         <a href="{% url 'vedomost' %}"><button class="btn btn-primary" type="button">Сводная ведомость</button></a>
         <a href="{% url 'shtatnoe' %}"><button class="btn btn-primary" type="button">Штатное расписание</button></a>
+        </p>
     </div>
 {% for teacher in teachers %}
-<table class="table table-warning">
+<table class="table table-warning table-hover">
     <p>
 
     </p>
-    <a href="{% url 'group_teacher' teacher.pk %}" ><h3>{{ teacher.name }}</h3></a>
+    <a href="{% url 'group_teacher' teacher.pk %}" ><h3>{{ teacher.get_full_name }}</h3></a>
 
     <thead>
 
