@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container my-5">
+  <table  class="table table-secondary table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Ф.И.О преподователя</th>
+        <th scope="col">Занимаемая должность</th>
+        <th scope="col">Звание</th>
+        <th scope="col">Пед. стаж</th>
+        <th scope="col">Штат. или совмест.</th>
+          <th scope="col">Ставка</th>
+          <th scope="col">Заочная ставка</th>
+
+      </tr>
+      {% for teacher in teachers %}
+          {% if teacher.is_budget %}
+          <tr class="table-warning">
+              <td>{{ teacher.get_full_name }}</td>
+              <td>{{ teacher.get_job_title_display }}</td>
+              <td>{{ teacher.zvanie }}</td>
+              <td>{{ teacher.ped_staj }}</td>
+              <td>{{ teacher.shtat_sovmest }}</td>
+              <td>{{ teacher.stavka }}</td>
+              <td>{{ teacher.zaochnoe_stavka }}</td>
+              <td><a href="{% url 'updateteacher' teacher.id %}"><button class="btn btn-success" type="button">Изменить</button></a></td>
+              <td><a href="{% url 'deleteteacher' teacher.id %}"><button class="btn btn-danger" type="button">Удалить</button></a></td>
+          </tr>
+          {% endif %}
+      {% endfor %}
+
+      {% for teacher in teachers %}
+          {% if teacher.is_budget == False %}
+          <tr class="table-hover">
+              <td>{{ teacher.get_full_name }}</td>
+              <td>{{ teacher.get_job_title_display }}</td>
+              <td>{{ teacher.zvanie }}</td>
+              <td>{{ teacher.ped_staj }}</td>
+              <td>{{ teacher.shtat_sovmest }}</td>
+              <td>{{ teacher.stavka }}</td>
+              <td>{{ teacher.zaochnoe_stavka }}</td>
+              <td><a href="{% url 'updateteacher' teacher.id %}"><button class="btn btn-success" type="button">Изменить</button></a></td>
+              <td><a href="{% url 'deleteteacher' teacher.id %}"><button class="btn btn-danger" type="button">Удалить</button></a></td>
+          </tr>
+          {% endif %}
+      {% endfor %}
+  </table>
+</div>
+
+</body>
+</html>

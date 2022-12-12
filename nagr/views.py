@@ -226,12 +226,41 @@ def createteacher(request):
         form = TeacherForm(request.POST)
         if form.is_valid():
             form.save()
+            # if teacher.doljnost == 1:
+            #     teacher.stavka = 750
 
             return HttpResponseRedirect('/thanks/')
     else:
         form = TeacherForm()
     context = {'form': form}
     return render(request, 'createteacher.html', context)
+
+def teacherlist(request):
+    teacher = Teacher.objects.all
+    context = {'teachers': teacher}
+    return render(request, 'teacherlist.html', context)
+
+
+def deleteteacher(request, pk):
+    teach = get_object_or_404(Teacher, id=pk)
+    teach.delete()
+    return redirect('teacherlist')
+
+
+def updateteacher(request, pk):
+    data = get_object_or_404(Teacher, id=pk)
+    form = TeacherForm(instance=data)
+
+    if request.method == "POST":
+        form = TeacherForm(request.POST, instance=data)
+        if form.is_valid():
+            form.save()
+            return redirect ('teacherlist')
+    context = {
+        "form":form
+    }
+    return render(request, 'createteacher.html', context)
+
 
 def vedomost(request):
     if request.method == 'GET':
@@ -413,9 +442,20 @@ def createconnects(request):
     context = {'form': form}
     return render(request, 'createconnects.html', context)
 
+def connectlist(request):
+    data = Connect.objects.all()
+    context = {'data': data}
+    return render(request, 'connectlist.html', context)
+
+
+def deleteconnect(request, pk):
+    data = get_object_or_404(Connect, id=pk)
+    data.delete()
+    return redirect('/')
+
 def shtatnoe(request):
     if request.method == 'GET':
-        teacher = Teacher.objects.all().annotate(vsego_uchebnyh_chasov=Sum('teacherr__group_id__vsego_uchebnyh_chasov'))
+        teacher = Teacher.objects.all().annotate(vsego_uchebnyh_chasov=Sum('teacherr__group_id__vsego_uchebnyh_chasov')).order_by('-id')
 
         context = {'teachers': teacher}
         return render(request, 'shtatnoe.html', context)

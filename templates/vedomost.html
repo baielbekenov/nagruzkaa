@@ -47,8 +47,8 @@
       {% for teacher in teachers %}
       {% if teacher.is_budget %}
       <tr class="table-warning">
-        <td>{{ teacher.name }}</td>
-        <td>{{ teacher.job_title }}</td>
+        <td>{{ teacher.get_full_name }}</td>
+        <td>{{ teacher.get_job_title_display }}</td>
         <td>{{ teacher.lekcii_po_ucheb_planu|floatformat:1 }}</td>
         <td>{{ teacher.lekcii_zachityvaetsa_v_nagruzku|floatformat:1 }}</td>
         <td>{{ teacher.praktZan_po_ucheb_planu|floatformat:1 }}</td>
@@ -84,8 +84,8 @@
     {% for teacher in teachers %}
       {% if teacher.is_budget == False %}
       <tr class="table-danger">
-        <td>{{ teacher.name }}</td>
-        <td>{{ teacher.job_title }}</td>
+        <td>{{ teacher.get_full_name }}</td>
+        <td>{{ teacher.get_job_title_display }}</td>
         <td>{{ teacher.lekcii_po_ucheb_planu|floatformat:1 }}</td>
         <td>{{ teacher.lekcii_zachityvaetsa_v_nagruzku|floatformat:1 }}</td>
         <td>{{ teacher.praktZan_po_ucheb_planu|floatformat:1 }}</td>

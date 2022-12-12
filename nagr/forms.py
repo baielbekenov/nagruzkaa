@@ -26,7 +26,7 @@ class GroupForm(ModelForm):
 
     class Meta:
         model = Group
-        fields = ('name_id', 'rukovodstvo_kafedroi', 'rukovodstvo_dekanatom')
+        fields = ('name_id', 'zaochnoe', 'rukovodstvo_kafedroi', 'rukovodstvo_dekanatom')
 
 
 class DisciplineForm(ModelForm):
@@ -34,7 +34,6 @@ class DisciplineForm(ModelForm):
     class Meta:
         model = Discipline
         fields = '__all__'
-
 
 
 
