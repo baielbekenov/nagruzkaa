@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.teacher, name='teacher'),
     path('create/', views.create, name='create'),
-    path('create1/', views.create1, name='create1'),
+    path('deletegroup/<int:pk>/', views.deletegroup, name='deletegroup'),
     path('group_teacher/<int:pk>', views.group_teacher, name='group_teacher'),
     path('creatediscipline/', views.creatediscipline, name='creatediscipline'),
     path('disciplinelist/', views.disciplinelist, name='disciplinelist'),
@@ -22,6 +22,6 @@ urlpatterns = [
     path('vedomost/', views.vedomost, name='vedomost'),
     path('export_excel/<int:pk>', views.export_excel, name='export_excel'),
     path('export_excel_vedomost/', views.export_excel_vedomost, name='export_excel_vedomost'),
-    path('showgroupp/', views.showgroupp, name='showgroupp'),
+    path('showgroup/', views.showgroup, name='showgroup'),
     path('thanks/', views.thanks, name='thanks'),
 ]

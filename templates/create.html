@@ -18,16 +18,20 @@
             <form method="post" novalidate>
                 {% csrf_token %}
                 {{ form.name|as_crispy_field }}
+                {{ form.zaochnoe | as_crispy_field}}
                 {{ form.for_discipline|as_crispy_field }}
                 {{ form.kol_stud_budget|as_crispy_field }}
                 {{ form.kol_stud_contract|as_crispy_field }}
                 {{ form.semester|as_crispy_field }}
+                {{ form.sovmest|as_crispy_field }}
                 {{ form.lekcii_po_ucheb_planu|as_crispy_field }}
                 {{ form.lekcii_zachityvaetsa_v_nagruzku|as_crispy_field }}
                 {{ form.praktZan_po_ucheb_planu|as_crispy_field }}
                 {{ form.praktZan_zachityvaetsa_v_nagruzku|as_crispy_field }}
                 {{ form.labRab_po_ucheb_planu|as_crispy_field }}
                 {{ form.labRab_zachityvaetsa_v_nagruzku|as_crispy_field }}
+                {{ form.rukovodstvo_kafedroi|as_crispy_field  }}
+                {{ form.rukovodstvo_dekanatom|as_crispy_field  }}
 
                 <button type="submit" class="btn btn-success">Добавить</button>
                 <p></p>
