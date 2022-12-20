@@ -3,8 +3,8 @@ import datetime
 from django.db.models import Sum
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from nagr.forms import GrouppForm, TeacherForm, ConnectForm, DisciplineForm, GroupForm
-from nagr.models import Connect, Teacher, Discipline, Groupp, Group
+from nagr.forms import GrouppForm, TeacherForm, ConnectForm, DisciplineForm
+from nagr.models import Connect, Teacher, Discipline, Groupp
 from django.shortcuts import get_object_or_404
 import xlwt
 
@@ -26,10 +26,37 @@ def create(request):
         if form.is_valid():
             group = form.save(commit=False)
             amount = get_object_or_404(Discipline, id=group.for_discipline_id)
-            group.obshee_kol_stud = group.kol_stud_budget + group.kol_stud_contract
+            group.obshee_kol_stud = group.obshee_kol_studd()
             group.amount_of_credit = amount.amount_of_credit
             group.discipline_name = amount.name
             group.is_kursovoi = amount.is_kursovoi
+            group.rukovod_KRIKP = group.rukovod_KRIKPP()
+            group.recenzirov_KR = group.recenzirov_KRR()
+            group.priem_SRS = group.priem_SRSS()
+            group.praktika_uchebnay = group.praktika_uchebnayy()
+            group.praktika_proizvod = group.praktika_proizvodd()
+            group.praktika_predkval = group.praktika_predkvall()
+            group.praktika_pedagog = group.praktika_pedagogg()
+            group.praktika_nauchno = group.praktika_nauchnoo()
+            group.kontrol_tekuchiy1 = group.kontrol_tekuchiy11()
+            group.kontrol_tekuchiy2 = group.kontrol_tekuchiy22()
+            group.kontrol_tekuchiy3 = group.kontrol_tekuchiy33()
+            group.kontrol_itogovyi = group.kontrol_itogovyii()
+            group.zachita_rukovod_VKR = group.zachita_rukovod_VKRR()
+            group.zachita_konsult = group.zachita_konsultt()
+            group.zachita_recencirovanie = group.zachita_recencirovaniee()
+            group.zachita_uchastie_v_GAK = group.zachita_uchastie_v_GAKK()
+            group.normokontr = group.normkontrr()
+            group.magistratura = group.magistraturaa()
+            group.aspirantura_doctorontura = group.aspirantura_doctoronturaa()
+            group.online = group.onlinee()
+            group.offline = group.offlinee()
+            group.academ_sov = group.academ_sovv()
+            group.prochie = group.prochiee()
+            group.vsego_uchebnyh_chasov = group.vsego_uchebnyh_chasovv()
+            group.za_vsego_uchebnyh_chasov = group.za_vsego_uchebnyh_chasovv()
+
+
             form.save()
             return redirect('/')
     else:
@@ -37,121 +64,16 @@ def create(request):
     content = {'form': form}
     return render(request, 'create.html', content)
 
-def create1(request):
-    if request.method == 'POST':
-        form = GroupForm(request.POST)
+def deletegroup(request, pk):
+    group = get_object_or_404(Groupp, id=pk)
+    group.delete()
+    return redirect('/')
 
-        if form.is_valid():
-            group_ = form.save(commit=False)
-            creategroup = get_object_or_404(Groupp, id=group_.name_id_id)
-            group_.name = creategroup.name
-            group_.discipline_name = creategroup.discipline_name
-            group_.amount_of_credit = creategroup.amount_of_credit
-            group_.kol_stud_budget = creategroup.kol_stud_budget
-            group_.kol_stud_contract = creategroup.kol_stud_contract
-            group_.obshee_kol_stud = creategroup.obshee_kol_stud
-            group_.semester = creategroup.semester
-            group_.lekcii_po_ucheb_planu = creategroup.lekcii_po_ucheb_planu
-            group_.lekcii_zachityvaetsa_v_nagruzku = creategroup.lekcii_zachityvaetsa_v_nagruzku
-            group_.praktZan_po_ucheb_planu = creategroup.praktZan_po_ucheb_planu
-            group_.praktZan_zachityvaetsa_v_nagruzku = creategroup.praktZan_zachityvaetsa_v_nagruzku
-            group_.labRab_po_ucheb_planu = creategroup.labRab_po_ucheb_planu
-            group_.labRab_zachityvaetsa_v_nagruzku = creategroup.labRab_zachityvaetsa_v_nagruzku
 
-            if creategroup.is_kursovoi == True:
-                group_.rukovod_KRIKP = creategroup.obshee_kol_stud * 3
-
-            if creategroup.lekcii_po_ucheb_planu != 0:
-                group_.priem_SRS = (group_.amount_of_credit * 30 - group_.lekcii_po_ucheb_planu - group_.praktZan_po_ucheb_planu - group_.labRab_po_ucheb_planu) / 30 * 0.2 * group_.obshee_kol_stud
-                group_.kontrol_tekuchiy1 = creategroup.obshee_kol_stud * 0.3
-                group_.kontrol_tekuchiy2 = creategroup.obshee_kol_stud * 0.3
-                group_.kontrol_itogovyi = group_.kontrol_tekuchiy1 + group_.kontrol_tekuchiy2 + group_.kontrol_tekuchiy3
-
-            if creategroup.discipline_name == 'Учебная практика':
-                if creategroup.semester == 4:
-                    group_.priem_SRS = 0
-                    group_.praktika_uchebnay = creategroup.obshee_kol_stud * 3
-                    group_.kontrol_tekuchiy1 = 0
-                    group_.kontrol_tekuchiy2 = 0
-                    group_.kontrol_itogovyi = group_.kontrol_tekuchiy1 + group_.kontrol_tekuchiy2 + group_.kontrol_tekuchiy3
-            if creategroup.discipline_name == 'Производственная практика':
-                if creategroup.semester == 6:
-                    group_.priem_SRS = 0
-                    group_.praktika_proizvod = creategroup.obshee_kol_stud * 3
-                    group_.kontrol_tekuchiy1 = 0
-                    group_.kontrol_tekuchiy2 = 0
-                    group_.kontrol_itogovyi = group_.kontrol_tekuchiy1 + group_.kontrol_tekuchiy2 + group_.kontrol_tekuchiy3
-            if creategroup.discipline_name == 'Предквалификационная практика':
-                if creategroup.semester == 8:
-                    group_.priem_SRS = 0
-                    group_.praktika_predkval = creategroup.obshee_kol_stud * 4
-                    group_.kontrol_tekuchiy1 = 0
-                    group_.kontrol_tekuchiy2 = 0
-                    group_.kontrol_itogovyi = group_.kontrol_tekuchiy1 + group_.kontrol_tekuchiy2 + group_.kontrol_tekuchiy3
-            if creategroup.discipline_name == 'Педагогическая практика':
-                if creategroup.semester >= 3:
-                    group_.priem_SRS = 0
-                    group_.praktika_pedagog = creategroup.obshee_kol_stud * 16
-                    group_.kontrol_tekuchiy1 = 0
-                    group_.kontrol_tekuchiy2 = 0
-                    group_.kontrol_itogovyi = group_.kontrol_tekuchiy1 + group_.kontrol_tekuchiy2 + group_.kontrol_tekuchiy3
-            if creategroup.discipline_name == 'Научно-исследовательская практика':
-                if creategroup.semester >= 6:
-                    group_.priem_SRS = 0
-                    group_.praktika_nauchno = creategroup.obshee_kol_stud * 4
-                    group_.kontrol_tekuchiy1 = 0
-                    group_.kontrol_tekuchiy2 = 0
-                    group_.kontrol_itogovyi = group_.kontrol_tekuchiy1 + group_.kontrol_tekuchiy2 + group_.kontrol_tekuchiy3
-            if creategroup.amount_of_credit == 0:
-                if creategroup.discipline_name == 'Руководство кафедрой':
-                    group_.rukovodstvo_kafedroi = group_.rukovodstvo_kafedroi
-                if creategroup.discipline_name == 'Руководство деканатом':
-                    group_.rukovodstvo_dekanatom = group_.rukovodstvo_dekanatom
-                if creategroup.discipline_name == 'Академсоветник':
-                    group_.academ_sov = creategroup.obshee_kol_stud * 1
-                if creategroup.discipline_name == 'Защита выпускной квалификационной работы':
-                    group_.priem_SRS = (group_.amount_of_credit * 30 - group_.lekcii_po_ucheb_planu - group_.praktZan_po_ucheb_planu - group_.labRab_po_ucheb_planu) / 30 * 0.2 * group_.obshee_kol_stud
-                    group_.kontrol_tekuchiy1 = creategroup.obshee_kol_stud * 0.3
-                    group_.kontrol_tekuchiy2 = creategroup.obshee_kol_stud * 0.3
-                    group_.kontrol_itogovyi = group_.kontrol_tekuchiy1 + group_.kontrol_tekuchiy2 + group_.kontrol_tekuchiy3
-                    group_.zachita_rukovod_VKR = creategroup.obshee_kol_stud * 14.5
-                    group_.zachita_konsult = 0
-                    group_.zachita_recencirovanie = creategroup.obshee_kol_stud * 3
-                    group_.zachita_uchastie_v_GAK = creategroup.obshee_kol_stud * 3.5
-                    group_.normokontr = creategroup.obshee_kol_stud * 1
-                if creategroup.lekcii_po_ucheb_planu == 18:
-                    group_.priem_SRS = 0
-                    group_.kontrol_tekuchiy1 = creategroup.obshee_kol_stud * 0.3
-                    group_.kontrol_tekuchiy2 = creategroup.obshee_kol_stud * 0.3
-                    group_.kontrol_itogovyi = group_.kontrol_tekuchiy1 + group_.kontrol_tekuchiy2 + group_.kontrol_tekuchiy3
-                    group_.zachita_uchastie_v_GAK = creategroup.obshee_kol_stud * 3.5
-                if creategroup.discipline_name == 'Руководство магистрских диссертаций':
-                    group_.priem_SRS = 0
-                    group_.kontrol_tekuchiy1 = 0
-                    group_.kontrol_tekuchiy2 = 0
-                    group_.kontrol_itogovyi = group_.kontrol_tekuchiy1 + group_.kontrol_tekuchiy2 + group_.kontrol_tekuchiy3
-                    group_.magistratura = creategroup.obshee_kol_stud * 25
-                # if creategroup.kol_stud_contract == 0:
-                #     if creategroup.semester == 0:
-                #         if creategroup.lekcii_po_ucheb_planu == 0:
-                #             group_.aspirantura_doctorontura = 25+25+75+75+100+150
-
-            group_.vsego_uchebnyh_chasov = (group_.lekcii_po_ucheb_planu + group_.lekcii_zachityvaetsa_v_nagruzku
-                                                    + group_.praktZan_po_ucheb_planu + group_.praktZan_zachityvaetsa_v_nagruzku + group_.labRab_po_ucheb_planu
-                                                    + group_.labRab_zachityvaetsa_v_nagruzku + group_.rukovod_KRIKP + group_.recenzirov_KR + group_.priem_SRS
-                                                    + group_.praktika_uchebnay + group_.praktika_proizvod + group_.praktika_predkval + group_.praktika_pedagog
-                                                    + group_.praktika_nauchno + group_.kontrol_tekuchiy1 + group_.kontrol_tekuchiy2 + group_.kontrol_tekuchiy3
-                                                    + group_.kontrol_itogovyi + group_.zachita_rukovod_VKR + group_.zachita_konsult + group_.zachita_recencirovanie
-                                                    + group_.zachita_uchastie_v_GAK + group_.normokontr + group_.magistratura + group_.aspirantura_doctorontura
-                                                    + group_.online + group_.offline + group_.academ_sov + group_.rukovodstvo_kafedroi + group_.rukovodstvo_dekanatom + group_.prochie) - group_.lekcii_po_ucheb_planu - group_.praktZan_po_ucheb_planu - group_.labRab_po_ucheb_planu - group_.kontrol_tekuchiy1 - group_.kontrol_tekuchiy2 - group_.kontrol_tekuchiy3
-
-            form.save()
-            return redirect('/')
-    else:
-        form = GroupForm()
-    content = {'form': form}
-    return render(request, 'create1.html', content)
-
+def showgroup(request):
+    group = Groupp.objects.all()
+    context = {'groups': group}
+    return render(request, 'showgroup.html', context)
 
 def group_teacher(request, pk):
     if request.method == 'GET':
@@ -281,7 +203,7 @@ def vedomost(request):
                                                          kontrol_tekuchiy1=Sum('teacherr__group_id__kontrol_tekuchiy1'),
                                                          kontrol_tekuchiy2=Sum('teacherr__group_id__kontrol_tekuchiy2'),
                                                          kontrol_tekuchiy3=Sum('teacherr__group_id__kontrol_tekuchiy3'),
-                                                         kontrol_itogovyi=Sum('teacherr__group_id__kontrol_itogovyi'),
+                                                         kontrol_itogovyii=Sum('teacherr__group_id__kontrol_itogovyi'),
                                                          zachita_rukovod_VKR=Sum('teacherr__group_id__zachita_rukovod_VKR'),
                                                          zachita_konsult=Sum('teacherr__group_id__zachita_konsult'),
                                                          zachita_recencirovanie=Sum('teacherr__group_id__zachita_recencirovanie'),
@@ -455,15 +377,8 @@ def deleteconnect(request, pk):
 
 def shtatnoe(request):
     if request.method == 'GET':
-        teacher = Teacher.objects.all().annotate(vsego_uchebnyh_chasov=Sum('teacherr__group_id__vsego_uchebnyh_chasov')).order_by('-id')
+        teacher = Teacher.objects.all().annotate(vsego_uchebnyh_chasov=Sum('teacherr__group_id__vsego_uchebnyh_chasov'),
+                                                 za_vsego_uchebnyh_chasov=Sum('teacherr__group_id__za_vsego_uchebnyh_chasov')).order_by('-id')
 
         context = {'teachers': teacher}
         return render(request, 'shtatnoe.html', context)
-
-
-def showgroupp(request):
-    if request.method == 'GET':
-        groupp = Group.objects.all()
-
-        context = {'groupp': groupp}
-        return render(request, 'showgroupp.html', context)

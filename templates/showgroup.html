@@ -51,7 +51,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for group in groupp %}
+    {% for group in groups %}
     <tr>
       <th>{{ group.name }}</th>
       <td>{{ group.kol_stud_budget }}</td>
@@ -66,7 +66,7 @@
       <td>{{ group.labRab_zachityvaetsa_v_nagruzku }}</td>
       <td>{{ group.rukovod_KRIKP }}</td>
       <td>{{ group.recenzirov_KR }}</td>
-      <td>{{ group.priem_SRS |floatformat:1 }}</td>
+      <td>{{ group.priem_SRS | floatformat:1 }}</td>
       <td>{{ group.praktika_uchebnay }}</td>
       <td>{{ group.praktika_proizvod }}</td>
       <td>{{ group.praktika_predkval }}</td>
@@ -90,6 +90,8 @@
       <td>{{ group.rukovodstvo_dekanatom }}</td>
       <td>{{ group.prochie }}</td>
       <td>{{ group.vsego_uchebnyh_chasov |floatformat:1 }}</td>
+      <td><a href="{% url 'deletegroup' group.id %}"><button class="btn btn-danger" type="button">Удалить</button></a></td>
+
 
     </tr>
     {% endfor %}

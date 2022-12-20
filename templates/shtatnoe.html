@@ -19,8 +19,6 @@
         <th scope="col">Штат. или совмест.</th>
         <th scope="col">Штатные единицы/бюджет</th>
         <th scope="col">Штатные единицы/контракт/очное</th>
-        <th scope="col">Штатные единицы/контракт/заочное</th>
-          <th scope="col">Штатные единицы/контракт/Всего ставок</th>
           <th scope="col">Количество часов</th>
         <th scope="col">Учебная нагрузка/бюджет</th>
         <th scope="col">Учебная нагрузка/контракт/очное</th>
@@ -36,8 +34,6 @@
               <td>{{ teacher.shtat_sovmest }}</td>
               <td>{{ teacher.stavka }}</td>
               <td>{{ 0 }}</td>
-              <td>{{ teacher.zaochnoe_stavka }}</td>
-              <td>{{ teacher.get_vsego_stavok }}</td>
               <td>{{ teacher.get_time }}</td>
               {% if teacher.get_time > teacher.vsego_uchebnyh_chasov %}
                   <td class="table-danger">{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
@@ -72,24 +68,18 @@
               <td>{{ teacher.shtat_sovmest }}</td>
               <td>{{ 0 }}</td>
               <td>{{ teacher.stavka }}</td>
-              <td>{{ teacher.zaochnoe_stavka }}</td>
-              <td>{{ teacher.get_vsego_stavok }}</td>
               <td>{{ teacher.get_time }}</td>
               <td>{{ 0 }}</td>
               {% if teacher.get_time > teacher.vsego_uchebnyh_chasov %}
-                  <td class="table-danger">{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
-                  {% else %}
-                  <td class="table-secondary">{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
+              <td class="table-danger">{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
+              {% else %}
+              <td class="table-secondary">{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
               {% endif %}
-              {% for i in teacher.teacherr.all %}
-                  {% for group in i.group_id.all %}
-                          {% if teacher.get_time_zaochnoe > group.get_vsego_ucheb_chasov %}
-                              <td class="table-danger">{{ group.get_vsego_ucheb_chasov|floatformat:1 }}</td>
-                              {% else %}
-                              <td class="table-secondary">{{ group.get_vsego_ucheb_chasov|floatformat:1 }}</td>
-                          {% endif %}
-                  {% endfor %}
-              {% endfor %}
+              {% if teacher.get_time > teacher.za_vsego_uchebnyh_chasov %}
+              <td class="table-danger">{{ teacher.za_vsego_uchebnyh_chasov|floatformat:1 }}</td>
+              {% else %}
+              <td class="table-secondary">{{ teacher.za_vsego_uchebnyh_chasov|floatformat:1 }}</td>
+              {% endif %}
           </tr>
           {% endif %}
       {% endfor %}
