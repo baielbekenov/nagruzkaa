@@ -6,6 +6,8 @@ from django.shortcuts import render, redirect
 from nagr.forms import GrouppForm, TeacherForm, ConnectForm, DisciplineForm
 from nagr.models import Connect, Teacher, Discipline, Groupp
 from django.shortcuts import get_object_or_404
+from django.views.generic.list import ListView
+from django.db.models import Q
 import xlwt
 
 
@@ -58,7 +60,7 @@ def create(request):
 
 
             form.save()
-            return redirect('/')
+            return redirect('teacher')
     else:
         form = GrouppForm()
     content = {'form': form}
@@ -67,7 +69,7 @@ def create(request):
 def deletegroup(request, pk):
     group = get_object_or_404(Groupp, id=pk)
     group.delete()
-    return redirect('/')
+    return redirect('showgroup')
 
 
 def showgroup(request):
@@ -137,7 +139,7 @@ def disciplinelist(request):
 def deletediscipline(request, pk):
     data = get_object_or_404(Discipline, id=pk)
     data.delete()
-    return redirect('/')
+    return redirect('disciplinelist')
 
 
 def thanks(request):
@@ -147,11 +149,16 @@ def createteacher(request):
     if request.method == 'POST':
         form = TeacherForm(request.POST)
         if form.is_valid():
-            form.save()
-            # if teacher.doljnost == 1:
-            #     teacher.stavka = 750
+            teacher = form.save(commit=False)
+            teacher.get_timee = teacher.get_time()
+            teacher.get_full_namee = teacher.get_full_name()
+            teacher.get_job_title = teacher.get_job_title_display()
+            teacher.get_za_stavka = teacher.get_za_stavkaa()
+            teacher.get_stavka = teacher.get_stavkaa()
+            teacher.zvaniiee = teacher.get_zvanie_display()
 
-            return HttpResponseRedirect('/thanks/')
+            form.save()
+            return redirect('teacher')
     else:
         form = TeacherForm()
     context = {'form': form}
@@ -169,19 +176,19 @@ def deleteteacher(request, pk):
     return redirect('teacherlist')
 
 
-def updateteacher(request, pk):
-    data = get_object_or_404(Teacher, id=pk)
-    form = TeacherForm(instance=data)
-
-    if request.method == "POST":
-        form = TeacherForm(request.POST, instance=data)
-        if form.is_valid():
-            form.save()
-            return redirect ('teacherlist')
-    context = {
-        "form":form
-    }
-    return render(request, 'createteacher.html', context)
+# def updateteacher(request, pk):
+#     data = get_object_or_404(Teacher, id=pk)
+#     form = TeacherForm(instance=data)
+#
+#     if request.method == "POST":
+#         form = TeacherForm(request.POST, instance=data)
+#         if form.is_valid():
+#             form.save()
+#             return redirect ('teacherlist')
+#     context = {
+#         "form":form
+#     }
+#     return render(request, 'createteacher.html', context)
 
 
 def vedomost(request):
@@ -264,37 +271,6 @@ def export_excel(request, pk):
                                                      'teacherr__group_id__aspirantura_doctorontura', 'teacherr__group_id__online', 'teacherr__group_id__offline',
                                                      'teacherr__group_id__academ_sov', 'teacherr__group_id__rukovodstvo_kafedroi', 'teacherr__group_id__rukovodstvo_dekanatom',
                                                      'teacherr__group_id__prochie', 'teacherr__group_id__vsego_uchebnyh_chasov',
-
-                                                     # # '.', '.', '.', '.', '.', '.',
-                                                     # Sum('teacherr__group_id__lekcii_po_ucheb_planu'),
-                                                     # Sum('teacherr__group_id__lekcii_zachityvaetsa_v_nagruzku'),
-                                                     # Sum('teacherr__group_id__praktZan_po_ucheb_planu'),
-                                                     # Sum('teacherr__group_id__praktZan_zachityvaetsa_v_nagruzku'),
-                                                     # Sum('teacherr__group_id__labRab_po_ucheb_planu'),
-                                                     # Sum('teacherr__group_id__labRab_zachityvaetsa_v_nagruzku'),
-                                                     # Sum('teacherr__group_id__rukovod_KRIKP'),
-                                                     # Sum('teacherr__group_id__recenzirov_KR'),
-                                                     # Sum('teacherr__group_id__priem_SRS'),
-                                                     # Sum('teacherr__group_id__praktika_uchebnay'),
-                                                     # Sum('teacherr__group_id__praktika_proizvod'),
-                                                     # Sum('teacherr__group_id__praktika_predkval'),
-                                                     # Sum('teacherr__group_id__praktika_pedagog'),
-                                                     # Sum('teacherr__group_id__praktika_nauchno'),
-                                                     # Sum('teacherr__group_id__kontrol_itogovyi'),
-                                                     # Sum('teacherr__group_id__zachita_rukovod_VKR'),
-                                                     # Sum('teacherr__group_id__zachita_konsult'),
-                                                     # Sum('teacherr__group_id__zachita_recencirovanie'),
-                                                     # Sum('teacherr__group_id__zachita_uchastie_v_GAK'),
-                                                     # Sum('teacherr__group_id__normokontr'),
-                                                     # Sum('teacherr__group_id__magistratura'),
-                                                     # Sum('teacherr__group_id__aspirantura_doctorontura'),
-                                                     # Sum('teacherr__group_id__online'),
-                                                     # Sum('teacherr__group_id__offline'),
-                                                     # Sum('teacherr__group_id__academ_sov'),
-                                                     # Sum('teacherr__group_id__rukovodstvo_kafedroi'),
-                                                     # Sum('teacherr__group_id__rukovodstvo_dekanatom'),
-                                                     # Sum('teacherr__group_id__prochie'),
-                                                     # Sum('teacherr__group_id__vsego_uchebnyh_chasov'),
                                                      )
 
     for row in rows:
@@ -329,7 +305,7 @@ def export_excel_vedomost(request):
         ws.write(row_num, col_num, columns[col_num], font_style)
 
     font_style = xlwt.XFStyle()
-    rows = Teacher.objects.all().values_list('name', 'job_title', Sum('teacherr__group_id__lekcii_po_ucheb_planu'),
+    rows = Teacher.objects.all().values_list('get_full_namee', 'get_job_title', Sum('teacherr__group_id__lekcii_po_ucheb_planu'),
                                              Sum('teacherr__group_id__lekcii_zachityvaetsa_v_nagruzku'), Sum('teacherr__group_id__praktZan_po_ucheb_planu'),
                                              Sum('teacherr__group_id__praktZan_zachityvaetsa_v_nagruzku'), Sum('teacherr__group_id__labRab_po_ucheb_planu'),
                                              Sum('teacherr__group_id__labRab_zachityvaetsa_v_nagruzku'), Sum('teacherr__group_id__rukovod_KRIKP'),
@@ -365,7 +341,7 @@ def createconnects(request):
     return render(request, 'createconnects.html', context)
 
 def connectlist(request):
-    data = Connect.objects.all()
+    data = Connect.objects.all().order_by('-id')
     context = {'data': data}
     return render(request, 'connectlist.html', context)
 
@@ -373,7 +349,7 @@ def connectlist(request):
 def deleteconnect(request, pk):
     data = get_object_or_404(Connect, id=pk)
     data.delete()
-    return redirect('/')
+    return redirect('connectlist')
 
 def shtatnoe(request):
     if request.method == 'GET':
@@ -382,3 +358,50 @@ def shtatnoe(request):
 
         context = {'teachers': teacher}
         return render(request, 'shtatnoe.html', context)
+
+
+def export_excel_shtatnoe(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=Expenses' + \
+        str(datetime.datetime.now()) + '.xls'
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Штатное расписание')
+    row_num = 0
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+    columns = ['Ф.И.О преподователя', 'Занимаемая должность', 'Звание', 'Пед. стаж',
+               'Штат. или совмест.', 'Штатные единицы/бюджет', 'Штатные единицы/контракт/очное',
+               'Количество часов', 'Учебная нагрузка/контракт/очное',
+               'Учебная нагрузка/контракт/заочное', ]
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    font_style = xlwt.XFStyle()
+    rows = Teacher.objects.all().values_list('get_full_namee', 'get_job_title', 'zvaniiee', 'ped_staj',
+                                             'shtat_sovmest', 'get_za_stavka', 'get_stavka', 'get_timee', Sum('teacherr__group_id__vsego_uchebnyh_chasov'),
+                                             Sum('teacherr__group_id__za_vsego_uchebnyh_chasov'),
+                                             )
+
+
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, str(row[col_num]), font_style)
+    wb.save(response)
+
+    return response
+
+
+class Search(ListView):
+    paginated_by = 3
+    template_name = 'teacher_list.html'
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Teacher.objects.filter(Q(first_name__icontains=query) | Q(last_name__icontains=query)).annotate(total=Sum('teacherr__group_id__vsego_uchebnyh_chasov'))
+        return object_list
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['q'] = self.request.GET.get('q')
+        return context

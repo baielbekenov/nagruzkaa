@@ -10,7 +10,11 @@
 
 <table class="table table-dark">
     <thead>
+    <th><a href="{% url 'teacher' %}"><button class="btn btn-primary" type="button">Главное</button></a></th>
     <tr>
+      <th scope="col">Дисциплины</th>
+      <th scope="col">Количество кредитов</th>
+      <th scope="col">Курсовой</th>
       <th scope="col">Группa</th>
       <th scope="col">Кол. студ.бюджет</th>
       <th scope="col">Кол. студ.контракт</th>
@@ -53,6 +57,9 @@
   <tbody>
     {% for group in groups %}
     <tr>
+      <th>{{ group.discipline_name }}</th>
+      <th>{{ group.amount_of_credit }}</th>
+      <th>{{ group.is_kursovoi }}</th>
       <th>{{ group.name }}</th>
       <td>{{ group.kol_stud_budget }}</td>
       <td>{{ group.kol_stud_contract }}</td>

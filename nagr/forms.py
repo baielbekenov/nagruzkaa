@@ -34,7 +34,8 @@ class TeacherForm(ModelForm):
 
     class Meta:
         model = Teacher
-        fields = '__all__'
+        fields = ('first_name', 'last_name', 'is_budget', 'job_title', 'zvanie',
+                  'ped_staj', 'shtat_sovmest', 'stavka')
 
 
 class ConnectForm(ModelForm):

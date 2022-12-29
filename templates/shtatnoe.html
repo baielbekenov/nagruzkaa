@@ -20,7 +20,6 @@
         <th scope="col">Штатные единицы/бюджет</th>
         <th scope="col">Штатные единицы/контракт/очное</th>
           <th scope="col">Количество часов</th>
-        <th scope="col">Учебная нагрузка/бюджет</th>
         <th scope="col">Учебная нагрузка/контракт/очное</th>
         <th scope="col">Учебная нагрузка/контракт/заочное</th>
       </tr>
@@ -29,7 +28,7 @@
           <tr class="table-hover">
               <td>{{ teacher.get_full_name }}</td>
               <td>{{ teacher.get_job_title_display }}</td>
-              <td>{{ teacher.zvanie }}</td>
+              <td>{{ teacher.get_zvanie_display }}</td>
               <td>{{ teacher.ped_staj }}</td>
               <td>{{ teacher.shtat_sovmest }}</td>
               <td>{{ teacher.stavka }}</td>
@@ -40,20 +39,7 @@
                   {% else %}
                   <td class="table-secondary">{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
               {% endif %}
-              <td>{{ 0 }}</td>
-              {% for i in teacher.teacherr.all %}
-                  {% for group in i.group_id.all %}
-                      {% if group.zaochnoe == True %}
-                          {% if teacher.get_time_zaochnoe > teacher.vsego_uchebnyh_chasov %}
-                              <td class="table-danger">{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
-                              {% else %}
-                              <td class="table-secondary">{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
-                          {% endif %}
-                      {% else %}
-
-                      {% endif %}
-                  {% endfor %}
-              {% endfor %}
+              <td class="table-secondary">{{ teacher.za_vsego_uchebnyh_chasov|floatformat:1 }}</td>
           </tr>
           {% endif %}
       {% endfor %}
@@ -63,28 +49,24 @@
           <tr class="table-hover">
               <td>{{ teacher.get_full_name }}</td>
               <td>{{ teacher.get_job_title_display }}</td>
-              <td>{{ teacher.zvanie }}</td>
+              <td>{{ teacher.get_zvanie_display }}</td>
               <td>{{ teacher.ped_staj }}</td>
               <td>{{ teacher.shtat_sovmest }}</td>
               <td>{{ 0 }}</td>
               <td>{{ teacher.stavka }}</td>
               <td>{{ teacher.get_time }}</td>
-              <td>{{ 0 }}</td>
               {% if teacher.get_time > teacher.vsego_uchebnyh_chasov %}
               <td class="table-danger">{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
               {% else %}
               <td class="table-secondary">{{ teacher.vsego_uchebnyh_chasov|floatformat:1 }}</td>
               {% endif %}
-              {% if teacher.get_time > teacher.za_vsego_uchebnyh_chasov %}
-              <td class="table-danger">{{ teacher.za_vsego_uchebnyh_chasov|floatformat:1 }}</td>
-              {% else %}
               <td class="table-secondary">{{ teacher.za_vsego_uchebnyh_chasov|floatformat:1 }}</td>
-              {% endif %}
+
           </tr>
           {% endif %}
       {% endfor %}
   </table>
-<!--  <a href="{% url 'export_excel_vedomost' %}"><button class="btn btn-primary" type="button">Экспорт на excel</button></a>-->
+  <a href="{% url 'export_excel_shtatnoe' %}"><button class="btn btn-primary" type="button">Экспорт на excel</button></a>
 </div>
 </body>
 </html>

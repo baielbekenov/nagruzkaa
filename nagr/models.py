@@ -26,16 +26,31 @@ doljnost = ((1, 'Профессор'),
             (8, 'инженер'),
             )
 
+zvaniee = (
+    (1, 'д.ф.-м.н.'),
+    (2, 'д.т.н.'),
+    (3, 'к.ф.-м.н.'),
+    (4, 'к.т.н.'),
+    (5, 'нет званий')
+)
+
 
 class Teacher(models.Model):
     first_name = models.CharField(max_length=20, verbose_name='Имя')
     last_name = models.CharField(max_length=30, verbose_name='Фамилия')
     is_budget = models.BooleanField(default=False, verbose_name='Бюджет')
     job_title = models.IntegerField(choices=doljnost, verbose_name='Должность')
-    zvanie = models.CharField(max_length=120, verbose_name='Звание')
+    zvanie = models.IntegerField(choices=zvaniee, verbose_name='Звание')
     ped_staj = models.IntegerField(verbose_name='Пед стаж')
     shtat_sovmest = models.CharField(max_length=250, verbose_name='Штат.или совмест.')
     stavka = models.FloatField(verbose_name='Ставка')
+    get_timee = models.FloatField(blank=True, null=True)
+    get_full_namee = models.CharField(max_length=30, blank=True, null=True)
+    get_job_title = models.CharField(max_length=30, blank=True, null=True)
+    get_za_stavka = models.FloatField(blank=True, null=True)
+    get_stavka = models.FloatField(blank=True, null=True)
+    zvaniiee = models.CharField(max_length=30, blank=True, null=True)
+
 
 
     class Meta:
@@ -58,6 +73,16 @@ class Teacher(models.Model):
         if self.job_title == 4:
             return 860
 
+    def get_za_stavkaa(self):
+        if self.is_budget == True:
+            return self.stavka
+        return 0
+
+    def get_stavkaa(self):
+        if self.is_budget == False:
+            return self.stavka
+        return 0
+
     def get_null(self):
         return 0
 
@@ -69,7 +94,7 @@ class Teacher(models.Model):
         if self.job_title == 3:
             return self.stavka * 850
         if self.job_title == 4:
-            return  self.stavka * 860
+            return self.stavka * 860
 
     def get_more_time(self):
         return self.get_time() + 30
@@ -367,7 +392,15 @@ class Connect(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='teacherr', verbose_name='Преподователь')
 
     def __str__(self):
-        return f'{self.teacher} --> {self.group_id.name}'
+        return self.teacher, self.group_id.values('name').get()['name'], self.group_id.values('discipline_name').get()['discipline_name']
 
+    def name(self):
+        return self.group_id.values('name').get()['name']
+
+    def discipline_name(self):
+        return self.group_id.values('discipline_name').get()['discipline_name']
+
+    def vsego(self):
+        return self.group_id.values('vsego_uchebnyh_chasov').get()['vsego_uchebnyh_chasov']
 
 

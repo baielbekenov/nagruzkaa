@@ -9,6 +9,7 @@
 <body>
 
 <div class="container my-5">
+    <th><a href="{% url 'teacher' %}"><button class="btn btn-primary" type="button">Главное</button></a></th>
   <table  class="table table-secondary table-hover">
       <thead>
       <tr>
@@ -18,7 +19,6 @@
         <th scope="col">Пед. стаж</th>
         <th scope="col">Штат. или совмест.</th>
           <th scope="col">Ставка</th>
-          <th scope="col">Заочная ставка</th>
 
       </tr>
       {% for teacher in teachers %}
@@ -30,8 +30,6 @@
               <td>{{ teacher.ped_staj }}</td>
               <td>{{ teacher.shtat_sovmest }}</td>
               <td>{{ teacher.stavka }}</td>
-              <td>{{ teacher.zaochnoe_stavka }}</td>
-              <td><a href="{% url 'updateteacher' teacher.id %}"><button class="btn btn-success" type="button">Изменить</button></a></td>
               <td><a href="{% url 'deleteteacher' teacher.id %}"><button class="btn btn-danger" type="button">Удалить</button></a></td>
           </tr>
           {% endif %}
@@ -46,8 +44,6 @@
               <td>{{ teacher.ped_staj }}</td>
               <td>{{ teacher.shtat_sovmest }}</td>
               <td>{{ teacher.stavka }}</td>
-              <td>{{ teacher.zaochnoe_stavka }}</td>
-              <td><a href="{% url 'updateteacher' teacher.id %}"><button class="btn btn-success" type="button">Изменить</button></a></td>
               <td><a href="{% url 'deleteteacher' teacher.id %}"><button class="btn btn-danger" type="button">Удалить</button></a></td>
           </tr>
           {% endif %}
