@@ -4,85 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae87cd85-d820-4351-a12d-f4922287edb0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="ae87cd85-d820-4351-a12d-f4922287edb0" name="Changes" comment="ddd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/nagr/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/nagr/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/discipline/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/group/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0002_alter_groupp_for_discipline.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0003_remove_groupp_for_discipline.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0004_groupp_for_discipline.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0005_remove_groupp_for_discipline.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0006_groupp_for_discipline.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0007_remove_connect_discipline_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0008_alter_groupp_for_discipline.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0009_connect_discipline_id_alter_groupp_for_discipline.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0010_alter_groupp_for_discipline.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0011_alter_groupp_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0012_alter_discipline_name_alter_teacher_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0013_alter_connect_discipline_id_alter_connect_group_id_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0014_teacher_academ_sov_teacher_aspi_doctoron_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0015_remove_groupp_academ_sov_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0016_alter_group_labrab_po_ucheb_planu_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0017_groupp_discipline_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0018_discipline_is_kursovoi_groupp_is_kursovoi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0019_alter_groupp_is_kursovoi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0020_alter_discipline_is_kursovoi_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0021_group_teacher_alter_group_name_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0022_remove_group_teacher.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0023_remove_connect_discipline_id_alter_connect_group_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0024_group_discipline_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0025_alter_discipline_options_alter_group_options_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0026_remove_teacher_academ_sov_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0027_connect_doljnost_connect_last_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0028_remove_connect_academ_sov_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0029_alter_teacher_is_budget.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0030_remove_connect_itogo_remove_connect_itogo2_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0031_remove_connect_shtatnye_budget_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0032_coppect_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0033_coppect_is_budget.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0034_rename_group_id_coppect_grouppp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0035_alter_coppect_stavka.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0036_alter_coppect_shtatnye_budget_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0037_delete_coppect.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0038_alter_discipline_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0039_alter_teacher_zvanie.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0040_alter_teacher_job_title_alter_teacher_zvanie.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0041_alter_teacher_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0042_remove_teacher_name_teacher_first_name_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0043_alter_teacher_job_title_alter_teacher_ped_staj_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0044_teacher_zaochnoe_stavka.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0045_alter_teacher_zaochnoe_stavka.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0046_alter_teacher_zaochnoe_stavka.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0047_group_zaochnoe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0048_teacher_zaochnoe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0049_alter_teacher_zaochnoe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0050_remove_group_zaochnoe_remove_teacher_zaochnoe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0051_group_zaochnoe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0052_remove_groupp_obshee_kol_stud_alter_discipline_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0053_alter_discipline_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0054_groupp_rukovodstvo_dekanatom_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0055_alter_connect_group_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0056_alter_connect_group_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0057_alter_connect_group_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0058_alter_connect_group_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0059_alter_connect_group_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0060_groupp_kontrol_itogovy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0061_remove_groupp_kontrol_itogovy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0062_groupp_kontrol_itogovyii.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0063_alter_groupp_kontrol_itogovyii.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0064_rename_kontrol_itogovyii_groupp_kontrol_itogovyi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0065_groupp_academ_sov_groupp_aspirantura_doctorontura_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0066_delete_group.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0067_groupp_za_vsego_uchebnyh_chasov_groupp_zaochnoe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0068_remove_teacher_zaochnoe_stavka.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0069_alter_groupp_zaochnoe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0070_groupp_sovmest_alter_teacher_is_budget_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/migrations/0071_rename_connect_nagruzka_remove_groupp_for_discipline_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/teacher/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +22,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "baielbekenov"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="c663cb17-e452-458c-a970-f5b13ad86fb0" />
+        <option name="url" value="https://github.com/baielbekenov/nagruzkaa.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/api/teacher/urls.py" root0="SKIP_INSPECTION" />
@@ -148,6 +85,63 @@
       <option name="presentableId" value="Default" />
       <updated>1665734682460</updated>
     </task>
+    <task id="LOCAL-00001" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1708014197888</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708014197888</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1708014257305</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708014257305</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1708014285644</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708014285644</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1708014310235</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708014310235</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1708014459197</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708014459197</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1708014552236</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708014552236</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1708014566183</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708014566183</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -160,5 +154,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ddd" />
+    <option name="LAST_COMMIT_MESSAGE" value="ddd" />
   </component>
 </project>
