@@ -25,21 +25,32 @@ SECRET_KEY = 'django-insecure-bieqrwjz*i_u1s*cj6_2871_!timf@4mmjr!7mm+yk80__z7+5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
-INSTALLED_APPS = [
+PROJECT_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'nagr',
+
+]
+
+DJANGO_APPS = [
+    'apps.discipline',
+    'apps.group',
+    'apps.nagr',
+    'apps.teacher'
+]
+
+THIRD_PARTY_APPS = [
     'crispy_forms',
 ]
+
+INSTALLED_APPS = [*DJANGO_APPS, *THIRD_PARTY_APPS, *PROJECT_APPS]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,11 +64,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'main.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
+            os.path.join(BASE_DIR, 'api', 'teacher', 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
