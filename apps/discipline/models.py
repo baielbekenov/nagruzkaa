@@ -12,4 +12,7 @@ class Discipline(models.Model):
         return self.name
 
     class Meta:
+        verbose_name = 'Дисциплина'
+        verbose_name_plural = 'Дисциплины'
         ordering = ('-id',)
+

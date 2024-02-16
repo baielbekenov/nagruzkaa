@@ -1,5 +1,4 @@
 {% load static %}
-{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,40 +10,77 @@
 </head>
 <body>
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-8">
-          <h1 class="mt-2">Введение исходных данных</h1>
-          <hr class="mt-0 mb-4">
-            <form method="post" novalidate>
-                {% csrf_token %}
-                {{ form.name|as_crispy_field }}
-                {{ form.zaochnoe | as_crispy_field}}
-                {{ form.for_discipline|as_crispy_field }}
-                {{ form.kol_stud_budget|as_crispy_field }}
-                {{ form.kol_stud_contract|as_crispy_field }}
-                {{ form.semester|as_crispy_field }}
-                {{ form.sovmest|as_crispy_field }}
-                {{ form.lekcii_po_ucheb_planu|as_crispy_field }}
-                {{ form.lekcii_zachityvaetsa_v_nagruzku|as_crispy_field }}
-                {{ form.praktZan_po_ucheb_planu|as_crispy_field }}
-                {{ form.praktZan_zachityvaetsa_v_nagruzku|as_crispy_field }}
-                {{ form.labRab_po_ucheb_planu|as_crispy_field }}
-                {{ form.labRab_zachityvaetsa_v_nagruzku|as_crispy_field }}
-                {{ form.rukovodstvo_kafedroi|as_crispy_field  }}
-                {{ form.rukovodstvo_dekanatom|as_crispy_field  }}
-
-                <button type="submit" class="btn btn-success">Добавить</button>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-            </form>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <h1 class="mt-2">Введение исходных данных</h1>
+                <hr class="mt-0 mb-4">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                        {{ form.name }}
+                    </div>
+                    <!-- Продолжайте для каждого поля аналогично -->
+                    <!-- Каждое поле формы должно быть обернуто в div с классом form-group -->
+                    <!-- Это стандартный способ стилизации форм в Bootstrap -->
+                    <div class="form-group">
+                        <label for="{{ form.zaochnoe.id_for_label }}">{{ form.zaochnoe.label }}</label>
+                        {{ form.zaochnoe }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.for_discipline.id_for_label }}">{{ form.for_discipline.label }}</label>
+                        {{ form.for_discipline }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.kol_stud_budget.id_for_label }}">{{ form.kol_stud_budget.label }}</label>
+                        {{ form.kol_stud_budget }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.kol_stud_contract.id_for_label }}">{{ form.kol_stud_contract.label }}</label>
+                        {{ form.kol_stud_contract }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.semester.id_for_label }}">{{ form.semester.label }}</label>
+                        {{ form.semester }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.sovmest.id_for_label }}">{{ form.sovmest.label }}</label>
+                        {{ form.sovmest }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.lekcii_po_ucheb_planu.id_for_label }}">{{ form.lekcii_po_ucheb_planu.label }}</label>
+                        {{ form.lekcii_po_ucheb_planu }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.lekcii_zachityvaetsa_v_nagruzku.id_for_label }}">{{ form.lekcii_zachityvaetsa_v_nagruzku.label }}</label>
+                        {{ form.lekcii_zachityvaetsa_v_nagruzku }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.praktZan_po_ucheb_planu.id_for_label }}">{{ form.praktZan_po_ucheb_planu.label }}</label>
+                        {{ form.praktZan_po_ucheb_planu }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.praktZan_zachityvaetsa_v_nagruzku.id_for_label }}">{{ form.praktZan_zachityvaetsa_v_nagruzku.label }}</label>
+                        {{ form.praktZan_zachityvaetsa_v_nagruzku }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.labRab_zachityvaetsa_v_nagruzku.id_for_label }}">{{ form.labRab_zachityvaetsa_v_nagruzku.label }}</label>
+                        {{ form.labRab_zachityvaetsa_v_nagruzku }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.rukovodstvo_kafedroi.id_for_label }}">{{ form.rukovodstvo_kafedroi.label }}</label>
+                        {{ form.rukovodstvo_kafedroi }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.rukovodstvo_dekanatom.id_for_label }}">{{ form.rukovodstvo_dekanatom.label }}</label>
+                        {{ form.rukovodstvo_dekanatom }}
+                    </div>
+                    <button type="submit" class="btn btn-success">Добавить</button>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
-
 </body>
 </html>
+
+
