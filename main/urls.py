@@ -20,6 +20,7 @@ from django.urls import path, include
 from main import settings
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path("api/", include("api.router")),
 ]

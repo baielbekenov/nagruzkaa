@@ -6,6 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="ae87cd85-d820-4351-a12d-f4922287edb0" name="Changes" comment="ddd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/discipline/templates/creatediscipline.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/discipline/templates/creatediscipline.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/groupp/templates/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/groupp/templates/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/nagr/templates/createconnects.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/nagr/templates/createconnects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/teacher/templates/createteacher.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/teacher/templates/createteacher.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/teacher/templates/teacher.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/teacher/templates/teacher.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/discipline/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/discipline/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/group/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/group/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/nagr/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/teacher/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/teacher/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +152,31 @@
       <option name="project" value="LOCAL" />
       <updated>1708014566183</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1708017521757</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708017521757</updated>
+    </task>
+    <task id="LOCAL-00009" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1708017538141</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708017538141</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ddd">
+      <option name="closed" value="true" />
+      <created>1708017563653</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708017563653</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

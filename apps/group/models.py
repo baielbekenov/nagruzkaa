@@ -61,6 +61,8 @@ class Groupp(models.Model):
         return self.name
 
     class Meta:
+        verbose_name = 'Группа'
+        verbose_name_plural = 'Группы'
         ordering = ('-id',)
 
 

@@ -26,6 +26,8 @@ class Teacher(models.Model):
 
 
     class Meta:
+        verbose_name = 'Преподователь'
+        verbose_name_plural = 'Преподователи'
         ordering = ('-id',)
 
     def __str__(self):
