@@ -7,11 +7,12 @@ from apps.teacher.models import Teacher
 
 
 class Nagruzka(models.Model):
+    name = models.CharField(max_length=123, blank=True, null=True)
     group_id = models.ManyToManyField(Groupp, verbose_name='Группа')
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='teacherr', verbose_name='Преподователь')
 
     def __str__(self):
-        return self.teacher
+        return self.name
 
     class Meta:
         verbose_name = 'Нагрузка'

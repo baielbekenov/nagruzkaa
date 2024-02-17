@@ -139,3 +139,45 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# byte-compiled / optimized / DLL files
+# tests and coverage
+*.pytest_cache
+
+.vscode
+# database & logs
+*.db
+*.sqlite3
+
+
+# venv
+.env2
+venv
+
+
+# other
+.DS_Store
+
+# javascript
+package-lock.json
+
+staticfiles/*
+!staticfiles/.gitkeep
+.vscode/symbols.json
+
+apps/static/assets/node_modules
+apps/static/assets/yarn.lock
+apps/static/assets/.temp
+core/settings.py
+
+
+.env.dev
+.env.logos
+
+
+
+data/cookies/
+/logs/
+apps/media/
+
+*.json
