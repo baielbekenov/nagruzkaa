@@ -37,6 +37,7 @@ PROJECT_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+<<<<<<< HEAD
 ]
 
 DJANGO_APPS = [
@@ -51,6 +52,21 @@ THIRD_PARTY_APPS = [
     'bootstrap4',
 ]
 
+=======
+]
+
+DJANGO_APPS = [
+    'apps.discipline',
+    'apps.group',
+    'apps.nagr',
+    'apps.teacher'
+]
+
+THIRD_PARTY_APPS = [
+    'crispy_forms',
+]
+
+>>>>>>> c844f21 (ddd)
 INSTALLED_APPS = [*DJANGO_APPS, *THIRD_PARTY_APPS, *PROJECT_APPS]
 
 MIDDLEWARE = [
@@ -70,10 +86,14 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+<<<<<<< HEAD
             os.path.join(BASE_DIR, 'api', 'teacher', 'templates'),
             os.path.join(BASE_DIR, 'api', 'discipline', 'templates'),
             os.path.join(BASE_DIR, 'api', 'groupp', 'templates'),
             os.path.join(BASE_DIR, 'api', 'nagr', 'templates')
+=======
+            os.path.join(BASE_DIR, 'api', 'teacher', 'templates')
+>>>>>>> c844f21 (ddd)
         ],
         'APP_DIRS': True,
         'OPTIONS': {
