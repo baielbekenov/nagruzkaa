@@ -6,17 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae87cd85-d820-4351-a12d-f4922287edb0" name="Changes" comment="ddd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/discipline/templates/creatediscipline.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/discipline/templates/creatediscipline.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/groupp/templates/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/groupp/templates/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/nagr/templates/createconnects.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/nagr/templates/createconnects.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/teacher/templates/createteacher.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/teacher/templates/createteacher.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/teacher/templates/teacher.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/teacher/templates/teacher.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/discipline/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/discipline/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/group/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/group/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/nagr/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/teacher/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/teacher/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/teacher/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/teacher/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +25,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "baielbekenov"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;baielbekenov&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -64,16 +55,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "end__stage",
-    "last_opened_file_path": "C:/Users/user/Desktop/oneweb/nagruzkaa/venv/Scripts",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;end__stage&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/Desktop/oneweb/nagruzkaa/venv/Scripts&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\user\Desktop\oneweb\nagruzkaa\api\teacher" />
