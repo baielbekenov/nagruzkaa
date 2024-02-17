@@ -12,11 +12,6 @@ class Discipline(models.Model):
         return self.name
 
     class Meta:
-<<<<<<< HEAD
         verbose_name = 'Дисциплина'
         verbose_name_plural = 'Дисциплины'
         ordering = ('-id',)
-
-=======
-        ordering = ('-id',)
->>>>>>> c844f21 (ddd)

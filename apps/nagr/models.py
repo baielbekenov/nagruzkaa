@@ -12,13 +12,10 @@ class Nagruzka(models.Model):
 
     def __str__(self):
         return self.teacher
-<<<<<<< HEAD
 
     class Meta:
         verbose_name = 'Нагрузка'
         verbose_name_plural = 'Нагрузки'
-=======
->>>>>>> c844f21 (ddd)
     
 
 
