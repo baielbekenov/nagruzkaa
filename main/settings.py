@@ -36,7 +36,6 @@ PROJECT_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
 ]
 
 DJANGO_APPS = [
@@ -49,7 +48,9 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'grappelli',
     'bootstrap4',
+
 ]
+
 
 INSTALLED_APPS = [*DJANGO_APPS, *THIRD_PARTY_APPS, *PROJECT_APPS]
 

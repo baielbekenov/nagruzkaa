@@ -39,7 +39,6 @@ class Teacher(models.Model):
     stavka = models.FloatField(verbose_name='Ставка')
     stavka_budget = models.FloatField(default=0, verbose_name='Ставка для бюджета')
 
-
     class Meta:
         verbose_name = 'Преподователь'
         verbose_name_plural = 'Преподователи'

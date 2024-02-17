@@ -4,10 +4,132 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="ae87cd85-d820-4351-a12d-f4922287edb0" name="Changes" comment="ddd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/teacher/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/teacher/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/teacher/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/teacher/models.py" afterDir="false" />
+=======
+    <list default="true" id="ae87cd85-d820-4351-a12d-f4922287edb0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/api/discipline/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/groupp/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/groupp/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/groupp/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/nagr/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/nagr/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/nagr/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/router.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/teacher/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/teacher/templates/teacher.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/teacher/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/teacher/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/discipline/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/discipline/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/discipline/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/discipline/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/discipline/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/nagr/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/nagr/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/nagr/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/nagr/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/discipline/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0002_alter_groupp_for_discipline.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0002_alter_groupp_for_discipline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0003_remove_groupp_for_discipline.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0003_remove_groupp_for_discipline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0004_groupp_for_discipline.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0004_groupp_for_discipline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0005_remove_groupp_for_discipline.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0005_remove_groupp_for_discipline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0006_groupp_for_discipline.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0006_groupp_for_discipline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0007_remove_connect_discipline_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0007_remove_connect_discipline_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0008_alter_groupp_for_discipline.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0008_alter_groupp_for_discipline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0009_connect_discipline_id_alter_groupp_for_discipline.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0009_connect_discipline_id_alter_groupp_for_discipline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0010_alter_groupp_for_discipline.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0010_alter_groupp_for_discipline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0011_alter_groupp_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0011_alter_groupp_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0012_alter_discipline_name_alter_teacher_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0012_alter_discipline_name_alter_teacher_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0013_alter_connect_discipline_id_alter_connect_group_id_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0013_alter_connect_discipline_id_alter_connect_group_id_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0014_teacher_academ_sov_teacher_aspi_doctoron_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0014_teacher_academ_sov_teacher_aspi_doctoron_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0015_remove_groupp_academ_sov_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0015_remove_groupp_academ_sov_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0016_alter_group_labrab_po_ucheb_planu_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0016_alter_group_labrab_po_ucheb_planu_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0017_groupp_discipline_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0017_groupp_discipline_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0018_discipline_is_kursovoi_groupp_is_kursovoi.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0018_discipline_is_kursovoi_groupp_is_kursovoi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0019_alter_groupp_is_kursovoi.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0019_alter_groupp_is_kursovoi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0020_alter_discipline_is_kursovoi_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0020_alter_discipline_is_kursovoi_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0021_group_teacher_alter_group_name_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0021_group_teacher_alter_group_name_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0022_remove_group_teacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0022_remove_group_teacher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0023_remove_connect_discipline_id_alter_connect_group_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0023_remove_connect_discipline_id_alter_connect_group_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0024_group_discipline_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0024_group_discipline_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0025_alter_discipline_options_alter_group_options_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0025_alter_discipline_options_alter_group_options_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0026_remove_teacher_academ_sov_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0026_remove_teacher_academ_sov_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0027_connect_doljnost_connect_last_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0027_connect_doljnost_connect_last_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0028_remove_connect_academ_sov_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0028_remove_connect_academ_sov_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0029_alter_teacher_is_budget.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0029_alter_teacher_is_budget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0030_remove_connect_itogo_remove_connect_itogo2_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0030_remove_connect_itogo_remove_connect_itogo2_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0031_remove_connect_shtatnye_budget_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0031_remove_connect_shtatnye_budget_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0032_coppect_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0032_coppect_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0033_coppect_is_budget.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0033_coppect_is_budget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0034_rename_group_id_coppect_grouppp.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0034_rename_group_id_coppect_grouppp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0035_alter_coppect_stavka.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0035_alter_coppect_stavka.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0036_alter_coppect_shtatnye_budget_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0036_alter_coppect_shtatnye_budget_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0037_delete_coppect.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0037_delete_coppect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0038_alter_discipline_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0038_alter_discipline_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0039_alter_teacher_zvanie.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0039_alter_teacher_zvanie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0040_alter_teacher_job_title_alter_teacher_zvanie.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0040_alter_teacher_job_title_alter_teacher_zvanie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0041_alter_teacher_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0041_alter_teacher_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0042_remove_teacher_name_teacher_first_name_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0042_remove_teacher_name_teacher_first_name_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0043_alter_teacher_job_title_alter_teacher_ped_staj_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0043_alter_teacher_job_title_alter_teacher_ped_staj_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0044_teacher_zaochnoe_stavka.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0044_teacher_zaochnoe_stavka.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0045_alter_teacher_zaochnoe_stavka.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0045_alter_teacher_zaochnoe_stavka.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0046_alter_teacher_zaochnoe_stavka.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0046_alter_teacher_zaochnoe_stavka.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0047_group_zaochnoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0047_group_zaochnoe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0048_teacher_zaochnoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0048_teacher_zaochnoe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0049_alter_teacher_zaochnoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0049_alter_teacher_zaochnoe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0050_remove_group_zaochnoe_remove_teacher_zaochnoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0050_remove_group_zaochnoe_remove_teacher_zaochnoe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0051_group_zaochnoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0051_group_zaochnoe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0052_remove_groupp_obshee_kol_stud_alter_discipline_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0052_remove_groupp_obshee_kol_stud_alter_discipline_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0053_alter_discipline_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0053_alter_discipline_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0054_groupp_rukovodstvo_dekanatom_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0054_groupp_rukovodstvo_dekanatom_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0055_alter_connect_group_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0055_alter_connect_group_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0056_alter_connect_group_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0056_alter_connect_group_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0057_alter_connect_group_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0057_alter_connect_group_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0058_alter_connect_group_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0058_alter_connect_group_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0059_alter_connect_group_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0059_alter_connect_group_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0060_groupp_kontrol_itogovy.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0060_groupp_kontrol_itogovy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0061_remove_groupp_kontrol_itogovy.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0061_remove_groupp_kontrol_itogovy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0062_groupp_kontrol_itogovyii.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0062_groupp_kontrol_itogovyii.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0063_alter_groupp_kontrol_itogovyii.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0063_alter_groupp_kontrol_itogovyii.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0064_rename_kontrol_itogovyii_groupp_kontrol_itogovyi.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0064_rename_kontrol_itogovyii_groupp_kontrol_itogovyi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0065_groupp_academ_sov_groupp_aspirantura_doctorontura_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0065_groupp_academ_sov_groupp_aspirantura_doctorontura_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0066_delete_group.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0066_delete_group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0067_groupp_za_vsego_uchebnyh_chasov_groupp_zaochnoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0067_groupp_za_vsego_uchebnyh_chasov_groupp_zaochnoe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0068_remove_teacher_zaochnoe_stavka.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0068_remove_teacher_zaochnoe_stavka.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0069_alter_groupp_zaochnoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0069_alter_groupp_zaochnoe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/0070_groupp_sovmest_alter_teacher_is_budget_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/nagr/migrations/0070_groupp_sovmest_alter_teacher_is_budget_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/discipline/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nagr/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/connectlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/nagr/templates/connectlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/groupp/templates/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/createconnects.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/nagr/templates/createconnects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/creatediscipline.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/discipline/templates/creatediscipline.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/createteacher.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/teacher/templates/createteacher.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/disciplinelist.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/discipline/templates/disciplinelist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/group_teacher.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/teacher/templates/group_teacher.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/showgroup.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/groupp/templates/showgroup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/shtatnoe.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/teacher/templates/shtatnoe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/teacher.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/teacherlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/teacher/templates/teacherlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/thanks.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/nagr/templates/thanks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/vedomost.html" beforeDir="false" afterPath="$PROJECT_DIR$/api/nagr/templates/vedomost.html" afterDir="false" />
+>>>>>>> c844f2153b8a9b5a0286f68522a83fb14cdb563b
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +147,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
@@ -39,6 +162,8 @@
       </UrlAndAccount>
     </option>
   </component>
+=======
+>>>>>>> c844f2153b8a9b5a0286f68522a83fb14cdb563b
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/api/teacher/urls.py" root0="SKIP_INSPECTION" />
   </component>
@@ -55,6 +180,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
@@ -65,6 +191,18 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "end__stage",
+    "last_opened_file_path": "C:/Users/user/Desktop/oneweb/nagruzkaa/venv/Scripts",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+>>>>>>> c844f2153b8a9b5a0286f68522a83fb14cdb563b
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\user\Desktop\oneweb\nagruzkaa\api\teacher" />
