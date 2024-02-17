@@ -6,6 +6,18 @@ __pycache__/
 # C extensions
 *.so
 
+staticfiles/
+
+**/migrations/**
+!**/migrations/__init__.py
+
+# TODO may be remove?
+apps/media/images/*
+apps/media/docs/*
+apps/media/pdf/*
+test.py
+.idea/
+
 # Distribution / packaging
 .Python
 build/
