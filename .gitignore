@@ -147,7 +147,7 @@ dmypy.json
 .vscode
 # database & logs
 *.db
-*.sqlite3
+
 
 
 # venv

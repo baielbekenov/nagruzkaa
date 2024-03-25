@@ -11,8 +11,23 @@ sovmes = ((1, 'Совместно'),
           )
 
 
+class Group(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Название группы')
+    zaochnoe = models.IntegerField(choices=select, default=1, verbose_name='Форма обучения')
+    kol_stud_budget = models.IntegerField(verbose_name='Кол. студ.бюджет', blank=True, null=True)
+    kol_stud_contract = models.IntegerField(verbose_name='Кол. студ.контракт', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Группа'
+        verbose_name_plural = 'Группы'
+
+
 class Groupp(models.Model):
-    name = models.CharField(max_length=150, verbose_name='Название группы: ')
+    group = models.ForeignKey(Group, on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Выберите группу:')
+    name = models.CharField(max_length=150, verbose_name='Название группы', blank=True, null=True,)
     zaochnoe = models.IntegerField(choices=select, default=1, verbose_name='Форма обучения')
     for_discipline = models.ForeignKey(Discipline, on_delete=models.CASCADE, verbose_name='Дисциплины: ')
     discipline_name = models.CharField(max_length=250, blank=True, null=True)
@@ -61,8 +76,8 @@ class Groupp(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Группа'
-        verbose_name_plural = 'Группы'
+        verbose_name = 'Группа нагрузка'
+        verbose_name_plural = 'Группы нагрузки'
         ordering = ('-id',)
 
 

@@ -1,12 +1,4 @@
 {% load static %}
-<<<<<<< HEAD
-=======
-{% load crispy_forms_tags %}
-<<<<<<< HEAD
->>>>>>> c844f21 (ddd)
-=======
->>>>>>> c844f2153b8a9b5a0286f68522a83fb14cdb563b
->>>>>>> 1123134500de84110ee4b9292c0de412a2dd36ea
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,46 +85,3 @@
 </html>
 
 
-=======
-      <div class="row justify-content-center">
-        <div class="col-8">
-          <h1 class="mt-2">Введение исходных данных</h1>
-          <hr class="mt-0 mb-4">
-            <form method="post" novalidate>
-                {% csrf_token %}
-                {{ form.name|as_crispy_field }}
-                {{ form.zaochnoe | as_crispy_field}}
-                {{ form.for_discipline|as_crispy_field }}
-                {{ form.kol_stud_budget|as_crispy_field }}
-                {{ form.kol_stud_contract|as_crispy_field }}
-                {{ form.semester|as_crispy_field }}
-                {{ form.sovmest|as_crispy_field }}
-                {{ form.lekcii_po_ucheb_planu|as_crispy_field }}
-                {{ form.lekcii_zachityvaetsa_v_nagruzku|as_crispy_field }}
-                {{ form.praktZan_po_ucheb_planu|as_crispy_field }}
-                {{ form.praktZan_zachityvaetsa_v_nagruzku|as_crispy_field }}
-                {{ form.labRab_po_ucheb_planu|as_crispy_field }}
-                {{ form.labRab_zachityvaetsa_v_nagruzku|as_crispy_field }}
-                {{ form.rukovodstvo_kafedroi|as_crispy_field  }}
-                {{ form.rukovodstvo_dekanatom|as_crispy_field  }}
-
-                <button type="submit" class="btn btn-success">Добавить</button>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-            </form>
-        </div>
-      </div>
-    </div>
-
-</body>
-</html>
-<<<<<<< HEAD
->>>>>>> c844f21 (ddd)
-=======
->>>>>>> c844f2153b8a9b5a0286f68522a83fb14cdb563b
->>>>>>> 1123134500de84110ee4b9292c0de412a2dd36ea
