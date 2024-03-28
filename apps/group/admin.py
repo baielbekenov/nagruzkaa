@@ -1,11 +1,16 @@
 from django.contrib import admin
 from apps.group.models import Groupp, Group
+from import_export.admin import ImportExportModelAdmin
+from apps.settings.models import Settings
 
 # Register your models here.
 
+settings_record = Settings.objects.first()
+s_obshee_kol_stud = settings_record.s_obshee_kol_stud
+
 @admin.register(Groupp)
-class GrouppAdmin(admin.ModelAdmin):
-    list_display = ('name', 'kol_stud_budget', 'kol_stud_contract', 'obshee_kol_stud', 'semester',
+class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ('discipline_name', 'name', 'vsego_uchebnyh_chasov', 'kol_stud_budget', 'kol_stud_contract', 'obshee_kol_stud', 'semester',
                     'lekcii_po_ucheb_planu', 'lekcii_zachityvaetsa_v_nagruzku', 'praktZan_po_ucheb_planu',
                     'praktZan_zachityvaetsa_v_nagruzku', 'labRab_po_ucheb_planu', 'labRab_zachityvaetsa_v_nagruzku', 
                     'rukovod_KRIKP', 'recenzirov_KR', 'priem_SRS', 'praktika_uchebnay', 
@@ -14,6 +19,8 @@ class GrouppAdmin(admin.ModelAdmin):
                     'zachita_rukovod_VKR', 'zachita_konsult', 'zachita_recencirovanie', 'zachita_uchastie_v_GAK',
                     'normokontr', 'magistratura', 'aspirantura_doctorontura', 'online', 'offline', 'academ_sov',
                     'rukovodstvo_kafedroi', 'rukovodstvo_dekanatom', 'prochie', 'vsego_uchebnyh_chasov')
+
+    list_filter = ('discipline_name', 'name')
 
     def lekcii_zachityvaetsa_v_nagruzku(self, obj):
         # Возвращает первые 50 символов поля description
@@ -37,7 +44,8 @@ class GrouppAdmin(admin.ModelAdmin):
             obj.zaochnoe = obj.group.zaochnoe
             obj.kol_stud_budget = obj.group.kol_stud_budget
             obj.kol_stud_contract = obj.group.kol_stud_contract
-            obj.obshee_kol_stud = obj.group.kol_stud_budget + obj.group.kol_stud_contract
+            obj.obshee_kol_stud = (obj.group.kol_stud_budget + obj.group.kol_stud_contract) * s_obshee_kol_stud
+            print('s_obshee_kol_stud: ', s_obshee_kol_stud)
             super().save_model(request, obj, form, change)
 
         # Проверяем, выбрана ли дисциплина
@@ -68,6 +76,8 @@ class GrouppAdmin(admin.ModelAdmin):
                 return 0
             if obj.praktika_proizvodd() > 0:
                 return 0
+            if obj.praktika_predkval > 0:
+                return 0
             if obj.praktika_pedagogg() > 0:
                 return 0
             if obj.praktika_nauchnoo() > 0:
@@ -82,7 +92,7 @@ class GrouppAdmin(admin.ModelAdmin):
 
         def praktika_uchebnay():
             if obj.discipline_name == 'Учебная практика':
-                if obj.semester == 4:
+                if obj.semester == 4 or obj.semester == 3:
                     return obj.obshee_kol_stud * 3
                 else:
                     return 0
@@ -92,7 +102,7 @@ class GrouppAdmin(admin.ModelAdmin):
 
         def praktika_proizvod():
             if obj.discipline_name == 'Производственная практика':
-                if obj.semester == 6:
+                if obj.semester == 6 or obj.semester == 5:
                     return obj.obshee_kol_stud * 3
                 else:
                     return 0
@@ -102,7 +112,7 @@ class GrouppAdmin(admin.ModelAdmin):
 
         def praktika_predkval():
             if obj.discipline_name == 'Предквалификационная практика':
-                if obj.semester == 8:
+                if obj.semester == 8 or obj.semester == 7:
                     return obj.obshee_kol_stud * 4
                 else:
                     return 0

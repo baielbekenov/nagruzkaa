@@ -42,12 +42,14 @@ DJANGO_APPS = [
     'apps.discipline',
     'apps.group',
     'apps.nagr',
-    'apps.teacher'
+    'apps.teacher',
+    'apps.settings'
 ]
 
 THIRD_PARTY_APPS = [
     'grappelli',
     'bootstrap4',
+    'import_export'
 ]
 
 
