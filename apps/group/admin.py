@@ -46,7 +46,6 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
             obj.kol_stud_budget = obj.group.kol_stud_budget
             obj.kol_stud_contract = obj.group.kol_stud_contract
             obj.obshee_kol_stud = (obj.group.kol_stud_budget + obj.group.kol_stud_contract) * s_obshee_kol_stud
-            print('s_obshee_kol_stud: ', s_obshee_kol_stud)
             super().save_model(request, obj, form, change)
 
         # Проверяем, выбрана ли дисциплина
@@ -160,6 +159,8 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 return 0
             if obj.discipline_name == 'Академсоветник':
                 return 0
+            if obj.zachita_uchastie_v_GAK:
+                return 0
             if obj.labRab_po_ucheb_planu == 64:
                 return obj.obshee_kol_stud * 0.1
             return obj.obshee_kol_stud * 0.3
@@ -184,6 +185,8 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 return 0
             if obj.discipline_name == 'Академсоветник':
                 return 0
+            if obj.zachita_uchastie_v_GAK:
+                return 0
             if obj.labRab_po_ucheb_planu == 64:
                 return obj.obshee_kol_stud * 0.1
             return obj.obshee_kol_stud * 0.3
@@ -202,7 +205,7 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         def zachita_rukovod_VKR():
             if obj.amount_of_credit == 0:
                 if obj.discipline_name == 'Защита выпускной квалификационной работы':
-                    return obj.obshee_kol_stud * 14.5
+                    return obj.obshee_kol_stud * 17.5
                 else:
                     return 0
             else:
