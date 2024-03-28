@@ -3,6 +3,7 @@ from apps.group.models import Groupp, Group
 from import_export.admin import ImportExportModelAdmin
 from apps.settings.models import Settings
 
+
 # Register your models here.
 
 settings_record = Settings.objects.first()
