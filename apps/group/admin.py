@@ -65,30 +65,13 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
         obj.recenzirov_KRR = 0
 
-        def priem_SRS():
-            if obj.sovmest == 1:
-                return 0
-            if obj.magistraturaa() > 0:
-                return 0
-            if obj.zachita_uchastie_v_GAKK() > 0:
-                return 0
-            if obj.praktika_uchebnayy() > 0:
-                return 0
-            if obj.praktika_proizvodd() > 0:
-                return 0
-            if obj.praktika_predkval > 0:
-                return 0
-            if obj.praktika_pedagogg() > 0:
-                return 0
-            if obj.praktika_nauchnoo() > 0:
-                return 0
-            if obj.praktika_predkvall() > 0:
-                return 0
-            priem_SRS = (obj.amount_of_credit * 30 - obj.lekcii_po_ucheb_planu -
-                          obj.praktZan_po_ucheb_planu - obj.labRab_po_ucheb_planu) / 30 * 0.2 * obj.obshee_kol_studd()
-            return priem_SRS
-
-        obj.priem_SRS = priem_SRS()
+        def zachita_uchastie_v_GAK():
+            if obj.discipline_name == 'Государственный экзамен по направлению потготовки':
+                return obj.obshee_kol_stud * 3.5
+            if obj.discipline_name == 'Защита выпускной квалификационной работы':
+                return obj.obshee_kol_stud * 3.5
+            return 0
+        obj.zachita_uchastie_v_GAK = zachita_uchastie_v_GAK()
 
         def praktika_uchebnay():
             if obj.discipline_name == 'Учебная практика':
@@ -140,6 +123,33 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 return 0
         obj.praktika_nauchno = praktika_nauchno()
 
+        def priem_SRS():
+            if obj.sovmest == 1:
+                return 0
+            if obj.magistraturaa() > 0:
+                return 0
+            if obj.zachita_uchastie_v_GAK > 0:
+                return 0
+            if obj.praktika_uchebnayy() > 0:
+                return 0
+            if obj.praktika_proizvodd() > 0:
+                return 0
+            if obj.praktika_predkval > 0:
+                return 0
+            if obj.praktika_pedagogg() > 0:
+                return 0
+            if obj.praktika_nauchnoo() > 0:
+                return 0
+            if obj.praktika_predkvall() > 0:
+                return 0
+            priem_SRS = (obj.amount_of_credit * 30 - obj.lekcii_po_ucheb_planu -
+                          obj.praktZan_po_ucheb_planu - obj.labRab_po_ucheb_planu) / 30 * 0.2 * obj.obshee_kol_studd()
+            return priem_SRS
+
+        obj.priem_SRS = priem_SRS()
+
+
+
         def kontrol_tekuchiy1():
             if obj.sovmest == 1:
                 return 0
@@ -159,7 +169,7 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 return 0
             if obj.discipline_name == 'Академсоветник':
                 return 0
-            if obj.zachita_uchastie_v_GAK:
+            if obj.zachita_uchastie_v_GAK > 0:
                 return 0
             if obj.labRab_po_ucheb_planu == 64:
                 return obj.obshee_kol_stud * 0.1
@@ -185,7 +195,7 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 return 0
             if obj.discipline_name == 'Академсоветник':
                 return 0
-            if obj.zachita_uchastie_v_GAK:
+            if obj.zachita_uchastie_v_GAK > 0:
                 return 0
             if obj.labRab_po_ucheb_planu == 64:
                 return obj.obshee_kol_stud * 0.1
@@ -232,15 +242,6 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 return 0
         obj.zachita_recencirovanie = zachita_recencirovanie()
 
-        def zachita_uchastie_v_GAK():
-            if obj.discipline_name == 'Государственный экзамен по направлению потготовки':
-                return obj.obshee_kol_stud * 3.5
-            if obj.discipline_name == 'Защита выпускной квалификационной работы':
-                return obj.obshee_kol_stud * 3.5
-            else:
-                return 0
-        obj.zachita_uchastie_v_GAK = zachita_uchastie_v_GAK()
-
         def normkontr():
             if obj.discipline_name == 'Защита выпускной квалификационной работы':
                 if obj.zachita_recencirovanie > 0:
@@ -249,7 +250,7 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                     return 0
             else:
                 return 0
-        obj.normkontr = normkontr()
+        obj.normokontr = normkontr()
 
         def magistratura():
             if obj.discipline_name == 'Руководство магистрских диссертаций':
@@ -261,7 +262,7 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         # Не законченная логика
         def aspirantura_doctorontura():
             if obj.discipline_name == 'Руководство аспирантами, соискателями':
-                res = 25 + 25 + 75 + 75 + 100 + 150
+                res = 100+150+100+100
                 return res
             else:
                 return 0
@@ -294,7 +295,7 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                        + obj.praktika_uchebnay + obj.praktika_proizvod + obj.praktika_predkval + obj.praktika_pedagog
                        + obj.praktika_nauchno + obj.kontrol_tekuchiy1 + obj.kontrol_tekuchiy2 + obj.kontrol_tekuchiy3
                        + obj.kontrol_itogovyi + obj.zachita_rukovod_VKR + obj.zachita_konsult + obj.zachita_recencirovanie
-                       + obj.zachita_uchastie_v_GAK + obj.normkontr + obj.magistratura + obj.aspirantura_doctorontura
+                       + obj.zachita_uchastie_v_GAK + obj.normokontr + obj.magistratura + obj.aspirantura_doctorontura
                        + obj.online + obj.offline + obj.academ_sov + obj.rukovodstvo_kafedroi + obj.rukovodstvo_dekanatom + obj.prochie) - obj.lekcii_po_ucheb_planu - obj.praktZan_po_ucheb_planu - obj.labRab_po_ucheb_planu - obj.kontrol_tekuchiy1 - obj.kontrol_tekuchiy2 - obj.kontrol_tekuchiy3
                 return res
             return 0
@@ -308,7 +309,7 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                        + obj.praktika_uchebnay + obj.praktika_proizvod + obj.praktika_predkval + obj.praktika_pedagog
                        + obj.praktika_nauchno + obj.kontrol_tekuchiy1 + obj.kontrol_tekuchiy2 + obj.kontrol_tekuchiy3
                        + obj.kontrol_itogovyi + obj.zachita_rukovod_VKR + obj.zachita_konsult + obj.zachita_recencirovanie
-                       + obj.zachita_uchastie_v_GAK + obj.normkontr + obj.magistratura + obj.aspirantura_doctorontura
+                       + obj.zachita_uchastie_v_GAK + obj.normokontr + obj.magistratura + obj.aspirantura_doctorontura
                        + obj.online + obj.offline + obj.academ_sov + obj.rukovodstvo_kafedroi + obj.rukovodstvo_dekanatom + obj.prochie) - obj.lekcii_po_ucheb_planu - obj.praktZan_po_ucheb_planu - obj.labRab_po_ucheb_planu - obj.kontrol_tekuchiy1 - obj.kontrol_tekuchiy2 - obj.kontrol_tekuchiy3
                 return res
             return 0
