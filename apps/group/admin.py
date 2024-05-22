@@ -2,6 +2,7 @@ from django.contrib import admin
 from apps.group.models import Groupp, Group
 from import_export.admin import ImportExportModelAdmin
 from apps.settings.models import Settings
+from apps.group.resources import GrouppResource
 
 
 # Register your models here.
@@ -11,7 +12,8 @@ s_obshee_kol_stud = settings_record.s_obshee_kol_stud
 
 @admin.register(Groupp)
 class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('discipline_name', 'name', 'vsego_uchebnyh_chasov', 'kol_stud_budget', 'kol_stud_contract', 'obshee_kol_stud', 'semester',
+    resource_class = GrouppResource
+    list_display = ('discipline_name', 'amount_of_credit', 'name', 'vsego_uchebnyh_chasov', 'kol_stud_budget', 'kol_stud_contract', 'obshee_kol_stud', 'semester',
                     'lekcii_po_ucheb_planu', 'lekcii_zachityvaetsa_v_nagruzku', 'praktZan_po_ucheb_planu',
                     'praktZan_zachityvaetsa_v_nagruzku', 'labRab_po_ucheb_planu', 'labRab_zachityvaetsa_v_nagruzku', 
                     'rukovod_KRIKP', 'recenzirov_KR', 'priem_SRS', 'praktika_uchebnay', 
@@ -19,9 +21,9 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                     'kontrol_tekuchiy1', 'kontrol_tekuchiy2', 'kontrol_tekuchiy3', 'kontrol_itogovyi',
                     'zachita_rukovod_VKR', 'zachita_konsult', 'zachita_recencirovanie', 'zachita_uchastie_v_GAK',
                     'normokontr', 'magistratura', 'aspirantura_doctorontura', 'online', 'offline', 'academ_sov',
-                    'rukovodstvo_kafedroi', 'rukovodstvo_dekanatom', 'prochie', 'vsego_uchebnyh_chasov')
+                    'rukovodstvo_kafedroi', 'rukovodstvo_dekanatom', 'prochie', 'vsego_uchebnyh_chasov', 'za_vsego_uchebnyh_chasov')
 
-    list_filter = ('discipline_name', 'name')
+    list_filter = ('discipline_name', 'name', 'zaochnoe')
 
     def lekcii_zachityvaetsa_v_nagruzku(self, obj):
         # Возвращает первые 50 символов поля description
@@ -45,7 +47,7 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
             obj.zaochnoe = obj.group.zaochnoe
             obj.kol_stud_budget = obj.group.kol_stud_budget
             obj.kol_stud_contract = obj.group.kol_stud_contract
-            obj.obshee_kol_stud = (obj.group.kol_stud_budget + obj.group.kol_stud_contract) * s_obshee_kol_stud
+            obj.obshee_kol_stud = round((obj.group.kol_stud_budget + obj.group.kol_stud_contract) * s_obshee_kol_stud, 1)
             super().save_model(request, obj, form, change)
 
         # Проверяем, выбрана ли дисциплина
@@ -57,13 +59,17 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
             super().save_model(request, obj, form, change)
 
         def rukovod_KRIKP():
-            if obj.is_kursovoi == True:
+            if obj.is_kursovoi is True:
                 return obj.obshee_kol_stud * 3
             else:
                 return 0
         obj.rukovod_KRIKP = rukovod_KRIKP()
 
-        obj.recenzirov_KRR = 0
+        def recenzirov_KRR():
+            if obj.group.zaochnoe == 2:
+                return obj.kol_stud_contract * 0.5
+            return 0
+        obj.recenzirov_KR = recenzirov_KRR()
 
         def zachita_uchastie_v_GAK():
             if obj.discipline_name == 'Государственный экзамен по направлению потготовки':
@@ -123,33 +129,6 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 return 0
         obj.praktika_nauchno = praktika_nauchno()
 
-        def priem_SRS():
-            if obj.sovmest == 1:
-                return 0
-            if obj.magistraturaa() > 0:
-                return 0
-            if obj.zachita_uchastie_v_GAK > 0:
-                return 0
-            if obj.praktika_uchebnayy() > 0:
-                return 0
-            if obj.praktika_proizvodd() > 0:
-                return 0
-            if obj.praktika_predkval > 0:
-                return 0
-            if obj.praktika_pedagogg() > 0:
-                return 0
-            if obj.praktika_nauchnoo() > 0:
-                return 0
-            if obj.praktika_predkvall() > 0:
-                return 0
-            priem_SRS = (obj.amount_of_credit * 30 - obj.lekcii_po_ucheb_planu -
-                          obj.praktZan_po_ucheb_planu - obj.labRab_po_ucheb_planu) / 30 * 0.2 * obj.obshee_kol_studd()
-            return priem_SRS
-
-        obj.priem_SRS = priem_SRS()
-
-
-
         def kontrol_tekuchiy1():
             if obj.sovmest == 1:
                 return 0
@@ -167,13 +146,15 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 return 0
             if obj.praktika_predkval > 0:
                 return 0
+            if obj.group.zaochnoe == 2:
+                return 0
             if obj.discipline_name == 'Академсоветник':
                 return 0
             if obj.zachita_uchastie_v_GAK > 0:
                 return 0
             if obj.labRab_po_ucheb_planu == 64:
-                return obj.obshee_kol_stud * 0.1
-            return obj.obshee_kol_stud * 0.3
+                return round(obj.obshee_kol_stud * 0.1, 1)
+            return round(obj.obshee_kol_stud * 0.3, 1)
         obj.kontrol_tekuchiy1 = kontrol_tekuchiy1()
 
         def kontrol_tekuchiy2():
@@ -197,9 +178,11 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 return 0
             if obj.zachita_uchastie_v_GAK > 0:
                 return 0
+            if obj.group.zaochnoe == 2:
+                return 0
             if obj.labRab_po_ucheb_planu == 64:
-                return obj.obshee_kol_stud * 0.1
-            return obj.obshee_kol_stud * 0.3
+                return round(obj.obshee_kol_stud * 0.1, 1)
+            return round(obj.obshee_kol_stud * 0.3, 1)
         obj.kontrol_tekuchiy2 = kontrol_tekuchiy2()
 
         def kontrol_tekuchiy3():
@@ -207,9 +190,13 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         obj.kontrol_tekuchiy3 = kontrol_tekuchiy3()
 
         def kontrol_itogovyi():
+            if obj.academ_sov > 0:
+                return 0
+            if obj.group.zaochnoe == 2:
+                return obj.obshee_kol_stud * 0.5
             if obj.semester == 0:
                 return 0
-            return obj.kontrol_tekuchiy1 + obj.kontrol_tekuchiy2 + obj.kontrol_tekuchiy3
+            return round(obj.kontrol_tekuchiy1 + obj.kontrol_tekuchiy2 + obj.kontrol_tekuchiy3, 1)
         obj.kontrol_itogovyi = kontrol_itogovyi()
 
         def zachita_rukovod_VKR():
@@ -252,12 +239,12 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 return 0
         obj.normokontr = normkontr()
 
-        def magistratura():
+        def magistraturaa():
             if obj.discipline_name == 'Руководство магистрских диссертаций':
                 return obj.obshee_kol_stud * 25
             else:
                 return 0
-        obj.magistratura = magistratura()
+        obj.magistratura = magistraturaa()
 
         # Не законченная логика
         def aspirantura_doctorontura():
@@ -287,6 +274,33 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
             return 0
         obj.prochie = prochie()
 
+        def priem_SRSS():
+            if obj.sovmest == 1:
+                return 0
+            if magistraturaa() > 0:
+                return 0
+            if obj.group.zaochnoe == 2:
+                return 0
+            if obj.zachita_uchastie_v_GAK > 0:
+                return 0
+            if praktika_uchebnay() > 0:
+                return 0
+            if praktika_proizvod() > 0:
+                return 0
+            if obj.praktika_predkval > 0:
+                return 0
+            if praktika_pedagog() > 0:
+                return 0
+            if praktika_nauchno() > 0:
+                return 0
+            if praktika_predkval() > 0:
+                return 0
+            priem_SRS = (obj.amount_of_credit * 30 - obj.lekcii_po_ucheb_planu -
+                          obj.praktZan_po_ucheb_planu - obj.labRab_po_ucheb_planu) / 30 * 0.2 * obj.obshee_kol_stud
+            return round(priem_SRS, 1)
+
+        obj.priem_SRS = priem_SRSS()
+
         def vsego_uchebnyh_chasov():
             if obj.zaochnoe == 1:
                 res = (obj.lekcii_po_ucheb_planu + obj.lekcii_zachityvaetsa_v_nagruzku
@@ -297,7 +311,7 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                        + obj.kontrol_itogovyi + obj.zachita_rukovod_VKR + obj.zachita_konsult + obj.zachita_recencirovanie
                        + obj.zachita_uchastie_v_GAK + obj.normokontr + obj.magistratura + obj.aspirantura_doctorontura
                        + obj.online + obj.offline + obj.academ_sov + obj.rukovodstvo_kafedroi + obj.rukovodstvo_dekanatom + obj.prochie) - obj.lekcii_po_ucheb_planu - obj.praktZan_po_ucheb_planu - obj.labRab_po_ucheb_planu - obj.kontrol_tekuchiy1 - obj.kontrol_tekuchiy2 - obj.kontrol_tekuchiy3
-                return res
+                return round(res, 1)
             return 0
         obj.vsego_uchebnyh_chasov = vsego_uchebnyh_chasov()
 
@@ -311,7 +325,7 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                        + obj.kontrol_itogovyi + obj.zachita_rukovod_VKR + obj.zachita_konsult + obj.zachita_recencirovanie
                        + obj.zachita_uchastie_v_GAK + obj.normokontr + obj.magistratura + obj.aspirantura_doctorontura
                        + obj.online + obj.offline + obj.academ_sov + obj.rukovodstvo_kafedroi + obj.rukovodstvo_dekanatom + obj.prochie) - obj.lekcii_po_ucheb_planu - obj.praktZan_po_ucheb_planu - obj.labRab_po_ucheb_planu - obj.kontrol_tekuchiy1 - obj.kontrol_tekuchiy2 - obj.kontrol_tekuchiy3
-                return res
+                return round(res, 1)
             return 0
         obj.za_vsego_uchebnyh_chasov = za_vsego_uchebnyh_chasov()
 
