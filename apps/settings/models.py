@@ -10,22 +10,18 @@ class SingletonModel(models.Model):
         abstract = True
 
     def save(self, *args, **kwargs):
-        # Если модель уже существует, удалите ее
-        self.__class__.objects.exclude(id=self.id).delete()
-        super(SingletonModel, self).save(*args, **kwargs)
+        self.pk = 1
+        super().save(*args, **kwargs)
 
     @classmethod
     def load(cls):
-        # Если модель еще не существует, создайте ее
-        if not cls.objects.exists():
-            cls.objects.create()
-        return cls.objects.get()
+        obj, created = cls.objects.get_or_create(pk=1)
+        return obj
 
 
 class Settings(SingletonModel):
-    s_obshee_kol_stud = models.FloatField()
-    
-    
+    s_obshee_kol_stud = models.FloatField("Значение для * Общее кол.студентов")
+    recenzirov_kr = models.FloatField("Значение для * Рецениров_КР")
     
     class Meta:
         verbose_name = 'Настройка'

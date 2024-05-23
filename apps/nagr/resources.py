@@ -4,14 +4,19 @@ from apps.nagr.models import TeacherSummary
 
 
 class NagruzkaResource(resources.ModelResource):
+    teacher = fields.Field(
+        column_name='Преподаватель',
+        attribute='teacher',
+        readonly=True)
+
     name = fields.Field(
         column_name='Название',
         attribute='name',
         readonly=True)
 
-    teacher = fields.Field(
-        column_name='Преподаватель',
-        attribute='teacher',
+    discipline_name = fields.Field(
+        column_name='Дисциплины',
+        attribute='discipline_name',
         readonly=True)
 
     lekcii_po_ucheb_planu = fields.Field(
@@ -154,7 +159,7 @@ class NagruzkaResource(resources.ModelResource):
 
     class Meta:
         model = TeacherSummary
-        fields = ('name', 'teacher', 'lekcii_po_ucheb_planu', 'praktZan_po_ucheb_planu',
+        fields = ('teacher', 'name', 'discipline_name', 'lekcii_po_ucheb_planu', 'praktZan_po_ucheb_planu',
                   'labRab_po_ucheb_planu', 'rukovod_KRIKP', 'recenzirov_KR',
                   'priem_SRS', 'praktika_uchebnay', 'praktika_proizvod',
                   'praktika_predkval', 'praktika_pedagog', 'praktika_nauchno',

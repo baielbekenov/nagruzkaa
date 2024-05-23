@@ -5,11 +5,6 @@ from apps.settings.models import Settings
 from apps.group.resources import GrouppResource
 
 
-# Register your models here.
-
-settings_record = Settings.objects.first()
-s_obshee_kol_stud = settings_record.s_obshee_kol_stud
-
 @admin.register(Groupp)
 class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = GrouppResource
@@ -47,6 +42,8 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
             obj.zaochnoe = obj.group.zaochnoe
             obj.kol_stud_budget = obj.group.kol_stud_budget
             obj.kol_stud_contract = obj.group.kol_stud_contract
+            settings = Settings.load()
+            s_obshee_kol_stud = settings.s_obshee_kol_stud
             obj.obshee_kol_stud = round((obj.group.kol_stud_budget + obj.group.kol_stud_contract) * s_obshee_kol_stud, 1)
             super().save_model(request, obj, form, change)
 
@@ -193,7 +190,7 @@ class GrouppAdmin(ImportExportModelAdmin, admin.ModelAdmin):
             if obj.academ_sov > 0:
                 return 0
             if obj.group.zaochnoe == 2:
-                return obj.obshee_kol_stud * 0.5
+                return round(obj.obshee_kol_stud * 0.5, 1)
             if obj.semester == 0:
                 return 0
             return round(obj.kontrol_tekuchiy1 + obj.kontrol_tekuchiy2 + obj.kontrol_tekuchiy3, 1)

@@ -21,7 +21,7 @@ class Nagruzka(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.name:
-            self.name = f"{self.teacher} - {self.group_id.name}"
+            self.name = f"{self.group_id.name}"
         super().save(*args, **kwargs)
         self.update_teacher_summary()
 
@@ -29,6 +29,11 @@ class Nagruzka(models.Model):
         teacher = self.teacher
         summary, created = TeacherSummary.objects.get_or_create(teacher=teacher)
         summary.save()
+
+    def discipline_name(self):
+        return self.group_id.discipline_name
+
+    discipline_name.short_description = 'Дисциплины'
 
     def lekcii_po_ucheb_planu(self):
         return self.group_id.lekcii_po_ucheb_planu

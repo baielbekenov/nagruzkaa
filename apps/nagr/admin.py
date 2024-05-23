@@ -16,7 +16,7 @@ class NagruzkaForm(forms.ModelForm):
 class NagruzkaAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     form = NagruzkaForm
     resource_class = NagruzkaResource
-    list_display = ('name',  'teacher', 'lekcii_po_ucheb_planu', 'praktZan_po_ucheb_planu',
+    list_display = ('teacher', 'name', 'discipline_name', 'lekcii_po_ucheb_planu', 'praktZan_po_ucheb_planu',
         'labRab_po_ucheb_planu', 'rukovod_KRIKP', 'recenzirov_KR', 'priem_SRS',
         'praktika_uchebnay', 'praktika_proizvod', 'praktika_predkval',
         'praktika_pedagog', 'praktika_nauchno', 'kontrol_itogovyi', 
