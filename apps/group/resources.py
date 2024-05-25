@@ -244,7 +244,7 @@ class GrouppResource(resources.ModelResource):
 
     class Meta:
         model = Groupp
-        fields = ('discipline_name', 'amount_of_credit', 'name', 'vsego_uchebnyh_chasov', 'kol_stud_budget', 'kol_stud_contract', 'obshee_kol_stud', 'semester',
+        fields = ('discipline_name', 'amount_of_credit', 'name', 'kol_stud_budget', 'kol_stud_contract', 'obshee_kol_stud', 'semester',
                     'lekcii_po_ucheb_planu', 'lekcii_zachityvaetsa_v_nagruzku', 'praktZan_po_ucheb_planu',
                     'praktZan_zachityvaetsa_v_nagruzku', 'labRab_po_ucheb_planu', 'labRab_zachityvaetsa_v_nagruzku',
                     'rukovod_KRIKP', 'recenzirov_KR', 'priem_SRS', 'praktika_uchebnay',

@@ -3,6 +3,8 @@ from import_export.admin import ImportExportModelAdmin
 from apps.nagr.models import Nagruzka, TeacherSummary
 from apps.nagr.resources import TeacherSummaryResource, NagruzkaResource
 from django import forms
+from django.db.models import Sum
+from apps.nagr.filter import SemesterTypeFilter
 
 
 class NagruzkaForm(forms.ModelForm):
@@ -16,7 +18,7 @@ class NagruzkaForm(forms.ModelForm):
 class NagruzkaAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     form = NagruzkaForm
     resource_class = NagruzkaResource
-    list_display = ('teacher', 'name', 'discipline_name', 'lekcii_po_ucheb_planu', 'praktZan_po_ucheb_planu',
+    list_display = ('teacher', 'name', 'semester_type', 'discipline_name', 'lekcii_po_ucheb_planu', 'praktZan_po_ucheb_planu',
         'labRab_po_ucheb_planu', 'rukovod_KRIKP', 'recenzirov_KR', 'priem_SRS',
         'praktika_uchebnay', 'praktika_proizvod', 'praktika_predkval',
         'praktika_pedagog', 'praktika_nauchno', 'kontrol_itogovyi', 
@@ -25,7 +27,11 @@ class NagruzkaAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         'aspirantura_doctorontura', 'academ_sov', 'rukovodstvo_kafedroi',
         'vsego_uchebnyh_chasov', 'za_vsego_uchebnyh_chasov')
     search_fields = ('name', 'teacher__first_name', 'teacher__last_name', )
-    list_filter = ('teacher', )
+    list_filter = ('teacher', 'group_id__semester', SemesterTypeFilter, )
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.order_by('group_id__semester')
 
 
 @admin.register(TeacherSummary)

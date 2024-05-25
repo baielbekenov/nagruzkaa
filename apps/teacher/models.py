@@ -1,18 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-
-doljnost = ((1, 'Профессор'),
-            (2, 'Доцент'),
-            (3, 'Старший преподователь'),
-            (4, 'Преподователь'),
-            (5, 'зав. лаб.'),
-            (6, 'лаборант'),
-            (7, 'ст.лаборант'),
-            (8, 'инженер'),
-            )
-
 
 class Doljnost(models.Model):
     name = models.CharField(max_length=50, verbose_name='Название')

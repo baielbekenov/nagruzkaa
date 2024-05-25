@@ -10,6 +10,18 @@ select = ((1, 'Очная'),
 sovmes = ((1, 'Совместно'),
           )
 
+semester = ((1, '1 Осенний семестер'),
+            (2, '2 Весений семестер'),
+            (3, '3 Осенний семестер'),
+            (4, '4 Весений семестер'),
+            (5, '5 Осенний семестер'),
+            (6, '6 Весений семестер'),
+            (7, '7 Осенний семестер'),
+            (8, '8 Весений семестер'),
+            (9, '9 Осенний семестер'),
+            (10, '10 Весений семестер'),
+            )
+
 
 class Group(models.Model):
     name = models.CharField(max_length=50, verbose_name='Название группы')
@@ -37,7 +49,7 @@ class Groupp(models.Model):
     kol_stud_budget = models.IntegerField(verbose_name='Кол. студ.бюджет', blank=True, null=True)
     kol_stud_contract = models.IntegerField(verbose_name='Кол. студ.контракт', blank=True, null=True)
     obshee_kol_stud = models.FloatField(verbose_name='Общее кол.студентов', blank=True, null=True)
-    semester = models.IntegerField(verbose_name='Семестер', blank=True, null=True)
+    semester = models.IntegerField(choices=semester, verbose_name='Семестер', blank=True, null=True)
     sovmest = models.IntegerField(choices=sovmes, verbose_name='Совместное преподование', blank=True, null=True)
     lekcii_po_ucheb_planu = models.IntegerField(verbose_name='Лекции/ По учебному плану', blank=True, null=True)
     lekcii_zachityvaetsa_v_nagruzku = models.IntegerField(verbose_name='Лекции/ Зачитывается в нагрузку кафедры (ч.)', blank=True, null=True)

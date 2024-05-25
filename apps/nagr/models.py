@@ -25,6 +25,14 @@ class Nagruzka(models.Model):
         super().save(*args, **kwargs)
         self.update_teacher_summary()
 
+    def semester_type(self):
+        if self.group_id.semester % 2 == 0:
+            return "Весенний семестер"
+        else:
+            return "Осенний семестер"
+
+    semester_type.short_description = 'Тип семестра'
+
     def update_teacher_summary(self):
         teacher = self.teacher
         summary, created = TeacherSummary.objects.get_or_create(teacher=teacher)

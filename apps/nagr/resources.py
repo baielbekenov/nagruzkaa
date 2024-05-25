@@ -14,6 +14,11 @@ class NagruzkaResource(resources.ModelResource):
         attribute='name',
         readonly=True)
 
+    semester_type = fields.Field(
+        column_name='Тип семестра',
+        attribute='semester_type',
+        readonly=True)
+
     discipline_name = fields.Field(
         column_name='Дисциплины',
         attribute='discipline_name',
@@ -159,7 +164,7 @@ class NagruzkaResource(resources.ModelResource):
 
     class Meta:
         model = TeacherSummary
-        fields = ('teacher', 'name', 'discipline_name', 'lekcii_po_ucheb_planu', 'praktZan_po_ucheb_planu',
+        fields = ('teacher', 'name', 'semester_type', 'discipline_name', 'lekcii_po_ucheb_planu', 'praktZan_po_ucheb_planu',
                   'labRab_po_ucheb_planu', 'rukovod_KRIKP', 'recenzirov_KR',
                   'priem_SRS', 'praktika_uchebnay', 'praktika_proizvod',
                   'praktika_predkval', 'praktika_pedagog', 'praktika_nauchno',
