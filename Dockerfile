@@ -27,4 +27,4 @@ COPY . .
 EXPOSE 8080
 
 # Команда запуска
-CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8080"]
+CMD ["gunicorn", "main.wsgi:application", "--bind", "0.0.0.0:8080"]
