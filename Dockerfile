@@ -22,6 +22,8 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 # Копируем проект
 COPY . .
 
+# Собираем статику (если используешь)
+RUN python manage.py collectstatic --noinput
 
 # Открываем порт
 EXPOSE 8080
