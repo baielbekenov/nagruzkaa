@@ -6,9 +6,7 @@ __pycache__/
 # C extensions
 *.so
 
-staticfiles/
 
-**/migrations/**
 !**/migrations/__init__.py
 
 # TODO may be remove?
@@ -71,7 +69,6 @@ coverage.xml
 *.log
 local_settings.py
 db.sqlite3-journal
-db.sqlite3
 
 # Flask stuff:
 instance/
@@ -160,8 +157,6 @@ venv
 
 # javascript
 package-lock.json
-
-staticfiles/*
 !staticfiles/.gitkeep
 .vscode/symbols.json
 
